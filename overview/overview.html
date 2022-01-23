@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Overview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../overview/overview.html" class="active">Overview</a></li><li class="chapter-item "><a href="../ag/intro/ag_tutorial.html"><strong aria-hidden="true">1.</strong> Adventure Game Tutorial</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ag/step_01/the_map.html"><strong aria-hidden="true">1.1.</strong> The Map</a></li><li class="chapter-item "><a href="../ag/step_02/the_player.html"><strong aria-hidden="true">1.2.</strong> The Player</a></li><li class="chapter-item "><a href="../ag/step_03/movement.html"><strong aria-hidden="true">1.3.</strong> Movement</a></li><li class="chapter-item "><a href="../ag/step_04/camera.html"><strong aria-hidden="true">1.4.</strong> Camera</a></li><li class="chapter-item "><a href="../ag/step_05/keys.html"><strong aria-hidden="true">1.5.</strong> Keys</a></li><li class="chapter-item "><a href="../ag/step_06/inventory.html"><strong aria-hidden="true">1.6.</strong> Inventory</a></li><li class="chapter-item "><a href="../ag/step_07/doors.html"><strong aria-hidden="true">1.7.</strong> Doors</a></li><li class="chapter-item "><a href="../ag/step_08/animated_tiles.html"><strong aria-hidden="true">1.8.</strong> Animate Tiles</a></li><li class="chapter-item "><a href="../ag/step_09/winning_and_losing.html"><strong aria-hidden="true">1.9.</strong> Winning and Losing</a></li><li class="chapter-item "><a href="../ag/step_10/trying_again.html"><strong aria-hidden="true">1.10.</strong> Trying Again</a></li><li class="chapter-item "><a href="../ag/step_11/bonus_adding_text.html"><strong aria-hidden="true">1.11.</strong> Bonus Step: Adding Text</a></li><li class="chapter-item "><a href="../ag/step_12/bonus_unlimited_sprite_types.html"><strong aria-hidden="true">1.12.</strong> Bonus Step: Unlimited Sprite Types</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p>PICO-8 is like an emulator for a video game console that was never made. But,
+unlike a typical emulator, PICO-8 includes the ability to browse and download
+games. What's more, is that the PICO-8 environment includes all the tools you
+need to create and modify games, whether they are ones of your own creation or
+ones that you downloaded yourself.</p>
+<h1 id="environment"><a class="header" href="#environment">Environment</a></h1>
+<p>When you first launch PICO-8, you are presented with a command prompt. This is
+a bit like the prompt computers that ran MS-DOS would boot to back in the 1980's.</p>
+<h2 id="commands"><a class="header" href="#commands">Commands</a></h2>
+<p>These are some of the commands you can run. Don't run any of these just yet.</p>
+<ul>
+<li>LS - show the files in the current directory</li>
+<li>RUN (or ctrl-r) - run the current cartridge</li>
+<li>SAVE (or ctrl-S) - save the current cartridge</li>
+<li>INSTALL_DEMOS - install a few demo cartridges</li>
+<li>SHUTDWON (or ctrl-q) - quit PICO-8</li>
+<li>REBOOT - restart PICO-8</li>
+<li>SPLORE - explore community created cartridges</li>
+</ul>
+<h1 id="splore"><a class="header" href="#splore">Splore</a></h1>
+<p>Let's run the <code>splore</code> command now.</p>
+<p>You will be greeted with the <code>favorites</code> view. It will be empty to start.
+Whenever you select a cart, you will be able to tag it as a favorite so it
+shows up here.</p>
+<p><img src="./overview/splore_favorites.png" alt="Favorites" /></p>
+<p>Pressing the <code>right</code> arrow takes you to the <em>Game Jam</em> section. These are carts
+created during <em>Game Jams</em> which are time limited competitions where
+participants write a game using a common theme as inspiration.</p>
+<p><img src="./overview/splore_jam.png" alt="Game Jams" /></p>
+<p>Press 'right' to see a list of randomly chosen games. If you are tired of going
+through the featured list, this is sometimes a good way to find something new.</p>
+<p><img src="./overview/splore_lucky.png" alt="Lucky Draw" /></p>
+<p>Press 'right' again to go to a list of <code>new</code> games. These are the most recent
+community uploads. The quality of the games in this list is going to be hit or
+miss. Not all of them will be complete.</p>
+<p><img src="./overview/splore_new.png" alt="New" /></p>
+<p>Press 'right' again to see my favorite list, the <code>featured</code> list. These are
+usually very high quality games or demos that highlight what is possible using
+PICO-8. My kids greatly enjoy going through this list and playing the games
+that catch their eye.</p>
+<p>We will return to this list shortly.</p>
+<p><img src="./overview/splore_featured.png" alt="Featured" /></p>
+<p>The next section is one that lets you search for games. This is helpful if you
+have a particular game you are trying to find or want to see what the community
+has made on a specific topic.</p>
+<p><img src="./overview/splore_search.png" alt="!Search" /></p>
+<p>The final section lets you browse your local files. These are the same files
+you will see by running <code>ls</code> from the command prompt.</p>
+<p><img src="./overview/splore_folders.png" alt="Folders" /></p>
+<h1 id="browsing-games"><a class="header" href="#browsing-games">Browsing Games</a></h1>
+<p>Let's go back to the <code>featured</code> list. Press <code>enter</code> to update the list. This
+requires Internet access! It will data about a number of games.</p>
+<p><img src="./overview/splore_featured.png" alt="Featured" /></p>
+<p>If you don't have Internet access, run the <code>install_demos</code> command to install
+and run a few demo carts.</p>
+<p><img src="./overview/pico8_jelpi.png" alt="Install Demos" /></p>
+<p>Use the arrow keys to navigate the list.</p>
+<p><img src="./overview/splore_browse.png" alt="Browse" /></p>
+<p>If you press <code>enter</code> on a game, you will have the option to <code>run</code> or <code>favorite</code>
+the game.</p>
+<p><img src="./overview/splore_options.png" alt="Options" /></p>
+<p>Choosing <code>run</code> will start the game. Most games give show a title screen and
+main menu. Some, like <code>flip knight</code> do not. Nearly all games can be controlled
+using a combination of the arrow keys and the action keys (z and x). z maps to
+<code>X</code> and x maps to <code>O</code>. When in doubt, just start pressing the action keys to
+see what happens!</p>
+<p><img src="./overview/splore_run.png" alt="Run" /></p>
+<p>Press <code>esc</code> and choose <code>exit to splore</code> if you want to exit the game.</p>
+<p><img src="./overview/splore_run_options.png" alt="Run Options" /></p>
+<h1 id="editing-a-downloaded-game"><a class="header" href="#editing-a-downloaded-game">Editing a Downloaded Game</a></h1>
+<p>As mentioned earlier, any game you run in PICO-8 can also be edited in PICO-8!
+This gives you super powers. It allows you to customize any aspect of a game
+you want! Let's take a peek in a cart to learn about the built-in editing
+tools.</p>
+<p>Run a game that looks interesting (or the Jelpi demo, if you don't have
+Internet access). Once it is running, hit <code>esc</code>. If it gives you the option to
+<code>exit to splore</code>, choose it and hit <code>esc</code>. Otherwise, just hit <code>esc</code>. This
+should put you at a prompt. (It is the <code>&gt; </code> at the top of this next
+screenshot.)</p>
+<p><img src="./overview/splore_prompt.png" alt="Prompt" /></p>
+<p>Now, hit <code>esc</code> to go into the code editor. This shows you all of the code in
+the game you were running most recently.</p>
+<p>The currently active tool is highlighted in the top right corner of the screen
+(<code>()</code> in the example.)</p>
+<p>If the game makes use of mulitple code tabs, these will appear in the top left.
+The game in the screenshot only has a single code tab (labeled <code>0</code>).</p>
+<p><img src="./overview/pico8_code.png" alt="Code Editor" /></p>
+<p>To see the sprites (which include character and background graphics), click on
+the face icon in the top right. It is just to the right of the <code>()</code> icon.</p>
+<p>Unless you are editing the same game as me, the contents of this page will look
+different.</p>
+<p>PICO-8 uses a fixed pallete (those are the colors used in the sprites). This
+pallete is shown in the top right. In the example, a light gray color is
+selected. The current sprite is shown in the top left. Sprites are 8 pixels
+wide and 8 pixels tall.</p>
+<p>The available sprites are shown in the bottom pane. In this example, sprite
+<code>001</code> is selected.</p>
+<p>There are a number of tools just above the bottom pane. These include a pencil,
+selection, movement, and paint bucket tool (among others).</p>
+<p>Zoom levels, sprite pages, and sprite flags are also on this page, but those
+will be discussed when and where they are used in the tutorials.</p>
+<p><img src="./overview/pico8_sprites.png" alt="Sprite Editor" /></p>
+<p>Sprites don't do us much good if they are not placed in a world. Most PICO-8
+carts make use of the built-in map memory to display their sprites. The map
+editor is to the right of the sprite editor. Click on it!</p>
+<p><img src="./overview/pico8_map.png" alt="Map Editor" /></p>
+<p>To the right of the map editor is the sound editor. Click on it!</p>
+<p><img src="./overview/pico8_sound.png" alt="Sound Editor" /></p>
+<p>To the right of the sound editor is the music editor. Click on it!</p>
+<p><img src="./overview/pico8_music.png" alt="Music Editor" /></p>
+<p>Those are all of the built-in tools. The <a href="https://www.lexaloffle.com/dl/docs/pico-8_manual.html">PICO-8
+Manual</a> provides more
+details about how to navigate and use the built-in tools. There's also a text
+version included in your pico-8 installation! Look for <code>pico-8.txt</code>.</p>
+<p>Making modifications to existing games is a great way to become familiar with
+the tools and to express your own creativity. This is best done with simpler
+titles as titles that push the limits of the console end up using advanced
+techniques to cram everything into the limits of the console which makes
+modifications more difficult than normal.</p>
+<p>If you do end up wanting to make changes, hit <code>esc</code> to go to the prompt and
+then use <code>save</code> to save the cart under a different name. Then feel free to make
+the changes you want. Try them out by pressing <code>ctrl-r</code> or using the <code>run</code>
+command. If you decide you don't like your changes, <code>load</code> your previously
+saved version. If you like them, save them with <code>ctrl-s</code> or the `save command.</p>
+<h1 id="creating-your-own-games"><a class="header" href="#creating-your-own-games">Creating Your Own Games</a></h1>
+<p>Now that we have explored an exist cart. Let's try making a simple cart.</p>
+<p>Get to the prompt and run <code>reboot</code>. This will reset PICO-8.</p>
+<p>Hit <code>esc</code> to go the code editor and enter the following.</p>
+<ul>
+<li>shift-L = <code>L</code></li>
+<li>shift-R = <code>R</code></li>
+<li>shift-U = <code>U</code></li>
+<li>shift-D = <code>D</code></li>
+</ul>
+<pre><code class="language-lua">function _init()
+ col=7
+ x=10
+ y=10
+end
+
+function _update()
+ if btn(L) then x-=1 end
+ if btn(R) then x+=1 end
+ if btn(U) then y-=1 end
+ if btn(D) then y+=1 end
+end
+
+function _draw()
+ cls()
+ for i=1,5 do
+  circfill(x,y,10-i*2,col+i)
+ end
+end
+</code></pre>
+<p>Hit <code>ctrl-r</code> to run it (or use the <code>run</code> command). You should see a
+multi-colored circle that you can move around with the arrow keys.</p>
+<p><img src="./overview/pico8_move_circle.png" alt="Move Circle" /></p>
+<p>Run <code>save move_circle</code> if you want to save it.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="next" href="../ag/intro/ag_tutorial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="next" href="../ag/intro/ag_tutorial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

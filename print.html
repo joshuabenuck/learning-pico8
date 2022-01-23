@@ -1,0 +1,901 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="overview/overview.html">Overview</a></li><li class="chapter-item "><a href="ag/intro/ag_tutorial.html"><strong aria-hidden="true">1.</strong> Adventure Game Tutorial</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="ag/step_01/the_map.html"><strong aria-hidden="true">1.1.</strong> The Map</a></li><li class="chapter-item "><a href="ag/step_02/the_player.html"><strong aria-hidden="true">1.2.</strong> The Player</a></li><li class="chapter-item "><a href="ag/step_03/movement.html"><strong aria-hidden="true">1.3.</strong> Movement</a></li><li class="chapter-item "><a href="ag/step_04/camera.html"><strong aria-hidden="true">1.4.</strong> Camera</a></li><li class="chapter-item "><a href="ag/step_05/keys.html"><strong aria-hidden="true">1.5.</strong> Keys</a></li><li class="chapter-item "><a href="ag/step_06/inventory.html"><strong aria-hidden="true">1.6.</strong> Inventory</a></li><li class="chapter-item "><a href="ag/step_07/doors.html"><strong aria-hidden="true">1.7.</strong> Doors</a></li><li class="chapter-item "><a href="ag/step_08/animated_tiles.html"><strong aria-hidden="true">1.8.</strong> Animate Tiles</a></li><li class="chapter-item "><a href="ag/step_09/winning_and_losing.html"><strong aria-hidden="true">1.9.</strong> Winning and Losing</a></li><li class="chapter-item "><a href="ag/step_10/trying_again.html"><strong aria-hidden="true">1.10.</strong> Trying Again</a></li><li class="chapter-item "><a href="ag/step_11/bonus_adding_text.html"><strong aria-hidden="true">1.11.</strong> Bonus Step: Adding Text</a></li><li class="chapter-item "><a href="ag/step_12/bonus_unlimited_sprite_types.html"><strong aria-hidden="true">1.12.</strong> Bonus Step: Unlimited Sprite Types</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p>PICO-8 is like an emulator for a video game console that was never made. But,
+unlike a typical emulator, PICO-8 includes the ability to browse and download
+games. What's more, is that the PICO-8 environment includes all the tools you
+need to create and modify games, whether they are ones of your own creation or
+ones that you downloaded yourself.</p>
+<h1 id="environment"><a class="header" href="#environment">Environment</a></h1>
+<p>When you first launch PICO-8, you are presented with a command prompt. This is
+a bit like the prompt computers that ran MS-DOS would boot to back in the 1980's.</p>
+<h2 id="commands"><a class="header" href="#commands">Commands</a></h2>
+<p>These are some of the commands you can run. Don't run any of these just yet.</p>
+<ul>
+<li>LS - show the files in the current directory</li>
+<li>RUN (or ctrl-r) - run the current cartridge</li>
+<li>SAVE (or ctrl-S) - save the current cartridge</li>
+<li>INSTALL_DEMOS - install a few demo cartridges</li>
+<li>SHUTDWON (or ctrl-q) - quit PICO-8</li>
+<li>REBOOT - restart PICO-8</li>
+<li>SPLORE - explore community created cartridges</li>
+</ul>
+<h1 id="splore"><a class="header" href="#splore">Splore</a></h1>
+<p>Let's run the <code>splore</code> command now.</p>
+<p>You will be greeted with the <code>favorites</code> view. It will be empty to start.
+Whenever you select a cart, you will be able to tag it as a favorite so it
+shows up here.</p>
+<p><img src="overview/./overview/splore_favorites.png" alt="Favorites" /></p>
+<p>Pressing the <code>right</code> arrow takes you to the <em>Game Jam</em> section. These are carts
+created during <em>Game Jams</em> which are time limited competitions where
+participants write a game using a common theme as inspiration.</p>
+<p><img src="overview/./overview/splore_jam.png" alt="Game Jams" /></p>
+<p>Press 'right' to see a list of randomly chosen games. If you are tired of going
+through the featured list, this is sometimes a good way to find something new.</p>
+<p><img src="overview/./overview/splore_lucky.png" alt="Lucky Draw" /></p>
+<p>Press 'right' again to go to a list of <code>new</code> games. These are the most recent
+community uploads. The quality of the games in this list is going to be hit or
+miss. Not all of them will be complete.</p>
+<p><img src="overview/./overview/splore_new.png" alt="New" /></p>
+<p>Press 'right' again to see my favorite list, the <code>featured</code> list. These are
+usually very high quality games or demos that highlight what is possible using
+PICO-8. My kids greatly enjoy going through this list and playing the games
+that catch their eye.</p>
+<p>We will return to this list shortly.</p>
+<p><img src="overview/./overview/splore_featured.png" alt="Featured" /></p>
+<p>The next section is one that lets you search for games. This is helpful if you
+have a particular game you are trying to find or want to see what the community
+has made on a specific topic.</p>
+<p><img src="overview/./overview/splore_search.png" alt="!Search" /></p>
+<p>The final section lets you browse your local files. These are the same files
+you will see by running <code>ls</code> from the command prompt.</p>
+<p><img src="overview/./overview/splore_folders.png" alt="Folders" /></p>
+<h1 id="browsing-games"><a class="header" href="#browsing-games">Browsing Games</a></h1>
+<p>Let's go back to the <code>featured</code> list. Press <code>enter</code> to update the list. This
+requires Internet access! It will data about a number of games.</p>
+<p><img src="overview/./overview/splore_featured.png" alt="Featured" /></p>
+<p>If you don't have Internet access, run the <code>install_demos</code> command to install
+and run a few demo carts.</p>
+<p><img src="overview/./overview/pico8_jelpi.png" alt="Install Demos" /></p>
+<p>Use the arrow keys to navigate the list.</p>
+<p><img src="overview/./overview/splore_browse.png" alt="Browse" /></p>
+<p>If you press <code>enter</code> on a game, you will have the option to <code>run</code> or <code>favorite</code>
+the game.</p>
+<p><img src="overview/./overview/splore_options.png" alt="Options" /></p>
+<p>Choosing <code>run</code> will start the game. Most games give show a title screen and
+main menu. Some, like <code>flip knight</code> do not. Nearly all games can be controlled
+using a combination of the arrow keys and the action keys (z and x). z maps to
+<code>X</code> and x maps to <code>O</code>. When in doubt, just start pressing the action keys to
+see what happens!</p>
+<p><img src="overview/./overview/splore_run.png" alt="Run" /></p>
+<p>Press <code>esc</code> and choose <code>exit to splore</code> if you want to exit the game.</p>
+<p><img src="overview/./overview/splore_run_options.png" alt="Run Options" /></p>
+<h1 id="editing-a-downloaded-game"><a class="header" href="#editing-a-downloaded-game">Editing a Downloaded Game</a></h1>
+<p>As mentioned earlier, any game you run in PICO-8 can also be edited in PICO-8!
+This gives you super powers. It allows you to customize any aspect of a game
+you want! Let's take a peek in a cart to learn about the built-in editing
+tools.</p>
+<p>Run a game that looks interesting (or the Jelpi demo, if you don't have
+Internet access). Once it is running, hit <code>esc</code>. If it gives you the option to
+<code>exit to splore</code>, choose it and hit <code>esc</code>. Otherwise, just hit <code>esc</code>. This
+should put you at a prompt. (It is the <code>&gt; </code> at the top of this next
+screenshot.)</p>
+<p><img src="overview/./overview/splore_prompt.png" alt="Prompt" /></p>
+<p>Now, hit <code>esc</code> to go into the code editor. This shows you all of the code in
+the game you were running most recently.</p>
+<p>The currently active tool is highlighted in the top right corner of the screen
+(<code>()</code> in the example.)</p>
+<p>If the game makes use of mulitple code tabs, these will appear in the top left.
+The game in the screenshot only has a single code tab (labeled <code>0</code>).</p>
+<p><img src="overview/./overview/pico8_code.png" alt="Code Editor" /></p>
+<p>To see the sprites (which include character and background graphics), click on
+the face icon in the top right. It is just to the right of the <code>()</code> icon.</p>
+<p>Unless you are editing the same game as me, the contents of this page will look
+different.</p>
+<p>PICO-8 uses a fixed pallete (those are the colors used in the sprites). This
+pallete is shown in the top right. In the example, a light gray color is
+selected. The current sprite is shown in the top left. Sprites are 8 pixels
+wide and 8 pixels tall.</p>
+<p>The available sprites are shown in the bottom pane. In this example, sprite
+<code>001</code> is selected.</p>
+<p>There are a number of tools just above the bottom pane. These include a pencil,
+selection, movement, and paint bucket tool (among others).</p>
+<p>Zoom levels, sprite pages, and sprite flags are also on this page, but those
+will be discussed when and where they are used in the tutorials.</p>
+<p><img src="overview/./overview/pico8_sprites.png" alt="Sprite Editor" /></p>
+<p>Sprites don't do us much good if they are not placed in a world. Most PICO-8
+carts make use of the built-in map memory to display their sprites. The map
+editor is to the right of the sprite editor. Click on it!</p>
+<p><img src="overview/./overview/pico8_map.png" alt="Map Editor" /></p>
+<p>To the right of the map editor is the sound editor. Click on it!</p>
+<p><img src="overview/./overview/pico8_sound.png" alt="Sound Editor" /></p>
+<p>To the right of the sound editor is the music editor. Click on it!</p>
+<p><img src="overview/./overview/pico8_music.png" alt="Music Editor" /></p>
+<p>Those are all of the built-in tools. The <a href="https://www.lexaloffle.com/dl/docs/pico-8_manual.html">PICO-8
+Manual</a> provides more
+details about how to navigate and use the built-in tools. There's also a text
+version included in your pico-8 installation! Look for <code>pico-8.txt</code>.</p>
+<p>Making modifications to existing games is a great way to become familiar with
+the tools and to express your own creativity. This is best done with simpler
+titles as titles that push the limits of the console end up using advanced
+techniques to cram everything into the limits of the console which makes
+modifications more difficult than normal.</p>
+<p>If you do end up wanting to make changes, hit <code>esc</code> to go to the prompt and
+then use <code>save</code> to save the cart under a different name. Then feel free to make
+the changes you want. Try them out by pressing <code>ctrl-r</code> or using the <code>run</code>
+command. If you decide you don't like your changes, <code>load</code> your previously
+saved version. If you like them, save them with <code>ctrl-s</code> or the `save command.</p>
+<h1 id="creating-your-own-games"><a class="header" href="#creating-your-own-games">Creating Your Own Games</a></h1>
+<p>Now that we have explored an exist cart. Let's try making a simple cart.</p>
+<p>Get to the prompt and run <code>reboot</code>. This will reset PICO-8.</p>
+<p>Hit <code>esc</code> to go the code editor and enter the following.</p>
+<ul>
+<li>shift-L = <code>L</code></li>
+<li>shift-R = <code>R</code></li>
+<li>shift-U = <code>U</code></li>
+<li>shift-D = <code>D</code></li>
+</ul>
+<pre><code class="language-lua">function _init()
+ col=7
+ x=10
+ y=10
+end
+
+function _update()
+ if btn(L) then x-=1 end
+ if btn(R) then x+=1 end
+ if btn(U) then y-=1 end
+ if btn(D) then y+=1 end
+end
+
+function _draw()
+ cls()
+ for i=1,5 do
+  circfill(x,y,10-i*2,col+i)
+ end
+end
+</code></pre>
+<p>Hit <code>ctrl-r</code> to run it (or use the <code>run</code> command). You should see a
+multi-colored circle that you can move around with the arrow keys.</p>
+<p><img src="overview/./overview/pico8_move_circle.png" alt="Move Circle" /></p>
+<p>Run <code>save move_circle</code> if you want to save it.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adventure-game-tutorial"><a class="header" href="#adventure-game-tutorial">Adventure Game Tutorial</a></h1>
+<p>The content in this subsection comes from the &quot;PICO-8 Top-Down Adventure Game Tutorial by Dylan Bennett.</p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLdLmU93eWisKpyk1WZywUSYAq5dkCPFIv">Original youtube playlist</a> of the tutorial series</li>
+<li><a href="https://mboffin.itch.io/pico-8-top-down-adventure-game-tutorial">Official homepage</a> for the tutorial</li>
+<li>Other PICO-8 tutorials from the author.</li>
+</ul>
+<p>It is also based on this <a href="http://www.helianthi.com/pages/pico-8-adventure/">write-up</a> of Dylan's tutorial by John Lehmann.</p>
+<h2 id="preview"><a class="header" href="#preview">Preview</a></h2>
+<p>Here is what you will build over the course of this tutorial.</p>
+<iframe width="750px" height="680px" src="../step_12/adventuregame_bonus_step_more_tiles.html"></iframe>
+<h2 id="other-examples"><a class="header" href="#other-examples">Other Examples</a></h2>
+<p>Here are some screenshots of games others have made following this tutorial.</p>
+<img src="ag/intro/./example_space_1.png" style="min-width: 400px; max-width: 800px"/>
+<img src="ag/intro/./example_space_2.png" style="min-width: 400px; max-width: 800px"/>
+<img src="ag/intro/./example_explorer_1.png" style="min-width: 400px; max-width: 800px"/>
+<img src="ag/intro/./example_explorer_2.png" style="min-width: 400px; max-width: 800px"/>
+<img src="ag/intro/./example_blob_1.png" style="min-width: 400px; max-width: 800px"/>
+<p>This is a game made by the tutorial's author that is based on the framework built
+in the tutorial. It adds a few additional features not covered in the tutorial, but
+is a great example of what can be done with this foundation.</p>
+<iframe width="750px" height="680px" src="./advent_challah.html"></iframe>
+<h2 id="other-top-down-games"><a class="header" href="#other-top-down-games">Other Top-Down Games</a></h2>
+<p>These are games that make use of a top-down perspective. Perhaps one of these will
+give you inspiration about what you want to include in your game?</p>
+<p>Puzzle Cave is a great example of a game successful enough to lead to sequels.
+Here's the original. Notice that from a layout design standpoint, this isn't much
+more complex than the adventure game tutorial.</p>
+<iframe width="750px" height="680px" src="./21104_puzzle_cave_1.html"></iframe>
+<p>Sequels usually add more than just additional levels. They often include new item
+or enemy types as this one does.</p>
+<iframe width="750px" height="680px" src="./21105_puzzle_cave_2.html"></iframe>
+<p>The third installment of the game uses a different theme than the other two.</p>
+<iframe width="750px" height="680px" src="./40867_puzzle_cave_3.html"></iframe>
+<p>Games are often built around a core mechanic. This is a fun little game that
+more or less only has the core mechanic. As you play, think about what would
+be needed to take this from a concept to a finished product.</p>
+<iframe width="750px" height="680px" src="./mellow-2.html"></iframe>
+<p>Some games keep you guessing. This one has several surprises just within its
+first few moments.</p>
+<iframe width="750px" height="680px" src="./47637_null.html"></iframe>
+<p>Here's a game that doesn't look much different than the adventure game tutorial,
+but it adds an inventory, dialog, the ability to inspect items, etc.</p>
+<iframe width="750px" height="680px" src="./41029_kleins_delivery.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-map"><a class="header" href="#the-map">The Map</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J1wvvbVQ5zo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Start by going to the sprite editor and drawing nine sprites:</p>
+<ul>
+<li>grass, fancy grass, and rock</li>
+<li>water, fancy water, and water rock</li>
+<li>road, fancy road, and wall</li>
+</ul>
+<p>Here's an example of what they might look like:</p>
+<img src="ag/step_01/./sprites.png" width="400"/>
+<p>Toggle sprite flag 0 on the rock, the three water tiles, and the wall sprite.</p>
+<img src="ag/step_01/./flag_0.png" width="400"/>
+<h2 id="draw-a-map"><a class="header" href="#draw-a-map">Draw a Map</a></h2>
+<p>Now that you have some sprites created, lets use them to draw a map for our game.</p>
+<p>Head on over to the map tool (third icon from the left in the top bar).</p>
+<img src="ag/step_01/./map_0.png"/>
+<p>Once you fill the first screen, add another. To do so, you'll need to pan
+the map by holding space and dragging with the mouse.</p>
+<p>Here's what you might want to put on the second screen.</p>
+<img src="ag/step_01/./map_1.png"/>
+<p>Here's what the map looks like zoomed out with both screens populated.</p>
+<img src="ag/step_01/./map_zoomed_out.png"/>
+<h2 id="game-loop"><a class="header" href="#game-loop">Game Loop</a></h2>
+<p>Create the main <code>game loop</code>. Put this in the <strong>0</strong> tab of the editor.</p>
+<img src="ag/step_01/./tab_0.png" width="400"/>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+end
+
+function _update()
+end
+
+function _draw()
+ cls()
+ draw_map()
+end
+</code></pre>
+<h2 id="map-code"><a class="header" href="#map-code">Map Code</a></h2>
+<p>Create code that draws the map. Click the <strong>+</strong> button to create a new tab. Put this code in the <strong>1</strong> tab of the code editor.</p>
+<pre><code class="language-lua">--map code
+
+function map_setup()
+ --map tile settings
+ wall=0
+ key=1
+ door=2
+ anim1=3
+ anim2=4
+ lose=6
+ win=7
+end
+
+function draw_map()
+ map(0,0,0,0,128,64)
+ends
+</code></pre>
+<h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
+<iframe width="750px" height="680px" src="./adventuregame_step_01.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-player"><a class="header" href="#the-player">The Player</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cam1jKG1hOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Draw a sprite for the player.</p>
+<img src="ag/step_02/./player_sprite.png"/>
+<p>Click on the <strong>+</strong> in the code editor to add a new tab. This will be used for the code related to the player.</p>
+<pre><code class="language-lua">-- player code
+
+function make_player()
+ p={}
+ p.x=3
+ p.y=2
+ p.sprite=1
+ p.keys=0
+end
+
+function draw_player()
+ spr(p.sprite,p.x*8,p.y*8)
+end
+</code></pre>
+<p>Call these functions from the <code>game loop</code> tab (tab <strong>0</strong>).</p>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+ make_player()
+end
+
+function _update()
+end
+
+function _draw()
+ cls()
+ draw_map()
+ draw_player()
+end
+</code></pre>
+<h2 id="end-result-1"><a class="header" href="#end-result-1">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+s</strong>. Run them with <strong>ctrl+r</strong>. You should see your
+player displayed on the map. The player cannot move around yet. We'll add some
+movement to the player in the next section.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_02.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="movement"><a class="header" href="#movement">Movement</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T9z6RPvyypE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Create a sound effect for bumping into an obstacle.</p>
+<img src="ag/step_03/./sound_bump.png" style="min_width: 400px; max-width: 800px"/>
+<p>Add two functions <code>is_tile</code> and <code>can_move</code> to the map code tab.</p>
+<pre><code class="language-lua">function is_tile(tile_type,x,y)
+ tile=mget(x,y)
+ has_flag=fget(tile,tile_type)
+ return has_flag
+end
+
+function can_move(x,y)
+ return not is_tile(wall, x, y)
+end
+</code></pre>
+<p>Add a function for moving the player to the player code tab.</p>
+<p><em>Note:</em> to get the arrow characters, use <strong>shift+L</strong>, <strong>shift+R</strong>, <strong>shift+U</strong>, <strong>shift+D</strong>.</p>
+<pre><code class="language-lua">function move_player()
+ newx=p.x
+ newy=p.y
+
+ if (btnp(L)) newx-=1
+ if (btnp(R)) newx+=1
+ if (btnp(U)) newy-=1
+ if (btnp(D)) newy+=1
+
+ if can_move(newx,newy) then
+  p.x=mid(0,newx,127)
+  p.y=mid(0,newy,63)
+ else
+  sfx(0)
+ end
+
+end
+</code></pre>
+<p>Call this function from function update in the game loop tab.</p>
+<pre><code class="language-lua">function _update()
+ move_player()
+end
+</code></pre>
+<h2 id="end-result-2"><a class="header" href="#end-result-2">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+s</strong>. Run them with <strong>ctrl+r</strong>. You should now be able
+to move your player around the screen, but once you go off of the screen, you are
+no longer able to see them. In the next section, we will make the camera follow
+the player so we can explore more of the map.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_03.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="camera"><a class="header" href="#camera">Camera</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DE-J_n-Y-cU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Have the camera follow the player around the map.</p>
+<p>Add code to set the camera to the <code>draw_map</code> function in the map code tab.</p>
+<ul>
+<li>divide the player's x and y coordinates by 16</li>
+<li>round down</li>
+<li>multiply by 16</li>
+<li>convert mapx, mapy to a pixel coordinate by multiplying by 8</li>
+</ul>
+<pre><code class="language-lua">function draw_map()
+ mapx=flr(p.x/16)*16
+ mapy=flr(p.y/16)*16
+ camera(mapx*8,mapy*8)
+
+ map(0,0,0,0,128,64)
+end
+</code></pre>
+<h2 id="end-result-3"><a class="header" href="#end-result-3">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. The camera should now
+follow your character from screen to screen. Wondering a world without being able
+to interact with it isn't all that interesting so lets add some things the player
+can pick up in the next section.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_04.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="keys"><a class="header" href="#keys">Keys</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8RXnQYXufB8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Draw a sprite for a key and a sprite for a chest. The key can be picked up and the chest can be opened. When the player interacts with these items they are replaced by the sprite to the right, so you will need to draw two additional sprites.</p>
+<p>The key is replaced by grass and the chest is replaced by an open chest.</p>
+<p>Make a sound effect for the pick-up key sound.</p>
+<p>Add two functions, <code>swap_tile</code> and <code>get_key</code>, to the map code tab.</p>
+<pre><code class="language-lua">function swap_tile(x,y)
+ tile=mget(x,y)
+ mset(x,y,tile+1)
+end
+
+function get_key(x,y)
+ p.keys+=1
+ swap_tile(x,y)
+ sfx(1)
+end
+</code></pre>
+<p>Add a function, interact to the player code tab.</p>
+<pre><code class="language-lua">function interact(x,y)
+ if (is_tile(key,x,y)) then
+  get_key(x,y)
+ end
+end
+</code></pre>
+<p>Now call this function from the <code>mode_player</code> function.</p>
+<pre><code class="language-lua">function move_player()
+ newx=p.x
+ newy=p.y
+
+ if (btnp(⬅️)) newx-=1
+ if (btnp(➡️)) newx+=1
+ if (btnp(⬆️)) newy-=1
+ if (btnp(⬇️)) newy+=1
+
+ interact(newx,newy)
+</code></pre>
+<h2 id="end-result-4"><a class="header" href="#end-result-4">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
+to have your character pick up keys, but you will not be able to see how many keys
+your character is holding. We will fix that in the next section.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_05.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="inventory"><a class="header" href="#inventory">Inventory</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZF8exnHMQRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>When the player holds down the X key we'll show how many keys the player has in their inventory.</p>
+<p>Create a new tab called inventory code and in in put a new function called <code>show_inventory</code>.</p>
+<pre><code class="language-lua">function show_inventory()
+ invx=mapx*8+40
+ invy=mapy*8+8
+
+ rectfill(invx,invy,invx+48,invy+24,0)
+ print(&quot;inventory&quot;,invx+7,invy+4,7)
+ print(&quot;keys &quot;..p.keys,invx+12,invy+14,9)
+end
+</code></pre>
+<p>Then call this function from the <code>_draw</code> function.
+You can use shift-x to get the <code>X</code> button.</p>
+<pre><code class="language-lua">function _draw()
+ cls()
+ draw_map()
+ draw_player()
+ if (btn(❎)) show_inventory()
+end
+</code></pre>
+<h2 id="end-result-5"><a class="header" href="#end-result-5">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
+to pick up a key and then press <code>X</code> to see how many keys the player has in their
+inventory. Next, lets add a way for the player to use the keys they collect.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_06.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doors"><a class="header" href="#doors">Doors</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9EiXQxfK05I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>We'll add doors that they player can open with their keys. First draw a pair if sprites, one for a closed door and, next to it, one for an open door.</p>
+<p>Add a sound effect for opening a door.</p>
+<p>Add a function <code>open_door</code> to open the door to the map code tab.</p>
+<pre><code class="language-lua">function open_door(x,y)
+ p.keys-=1
+ swap_tile(x,y)
+ sfx(2)
+end
+</code></pre>
+<p>This function gets called in the interact function.</p>
+<pre><code class="language-lua">function interact(x,y)
+ if (is_tile(key,x,y)) then
+  get_key(x,y)
+ elseif (is_tile(door,x,y) and p.keys&gt;0) then
+  open_door(x,y)
+ end
+end
+</code></pre>
+<h2 id="end-result-6"><a class="header" href="#end-result-6">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
+to pick up a key and use it to unlock a door.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_07.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="animate-tiles"><a class="header" href="#animate-tiles">Animate Tiles</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MkXeXYPF2pw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>In this step we add animated tiles. Animated tiles bring the map to life. Here we'll use them to make a spike trap that the player has to navigate through.</p>
+<p>Create a pair of sprites, one for the spikes up and one with the spikes down. The animation will have cause the two sprites to flip between each other.</p>
+<p>The tile with spikes up should have two flags set: <strong>flag 3</strong> (anim1, or step one of the animation) and <strong>flag 6</strong> (lose), which will cause the player to lose if they step on them.</p>
+<img src="ag/step_08/./spikes_up.png" style="min-width: 400px; max-width: 800px"/>
+<p>The tile with spikes down should have one flag set: <strong>flag 4</strong>, (anim2, step 2 of the animation).</p>
+<img src="ag/step_08/./spikes_down.png" style="min-width: 400px; max-width: 800px"/>
+<p>Add two variables to the <code>map_setup</code> function in the map code tab.</p>
+<pre><code class="language-lua">function map_setup()
+ --timers
+ timer=0
+ anim_time=30 -- 30 = 1 second
+</code></pre>
+<p>Add a new function <code>unswap_tile</code> to the map code tab. Note that this function is nearly the same as <code>swap_tile</code> and so you can use copy paste to write it.</p>
+<pre><code class="language-lua">function unswap_tile(x,y)
+ tile=mget(x,y)
+ mset(x,y,tile-1)
+end
+</code></pre>
+<p>Add a new tab, animation code. Add a new function <code>toggle_tiles</code> to this tab.</p>
+<pre><code class="language-lua">function toggle_tiles()
+ for x=mapx,mapx+15 do
+  for y=mapy,mapy+15 do
+   if (is_tile(anim1,x,y)) then
+    swap_tile(x,y)
+    sfx(3)
+   elseif (is_tile(anim2,x,y))then
+    unswap_tile(x,y)
+    sfx(3)
+   end
+  end
+ end
+end
+</code></pre>
+<p>Add a new function called <code>update_map</code> to the map code tab.</p>
+<pre><code class="language-lua">function update_map()
+ if (timer&lt;0) then
+  toggle_tiles()
+  timer=anim_time
+ end
+ timer-=1
+end
+</code></pre>
+<p>Finally, call the <code>update_map</code> function from the <code>_update</code> function in the <code>game loop</code> (<strong>tab 0</strong>).</p>
+<pre><code class="language-lua">function _update()
+ update_map()
+ move_player()
+end
+</code></pre>
+<h2 id="end-result-7"><a class="header" href="#end-result-7">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. Your animated tiles
+should change about once every second, but there still isn't a way to win the
+game. Lets add that next.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_08.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="winning-and-losing"><a class="header" href="#winning-and-losing">Winning and Losing</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aKnlApA_42U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Add a new sprite that the player has to move over to win the game.</p>
+<img src="ag/step_09/./target_sprite.png" style="min-width: 400px; max-width: 800px"/>
+<p>Set the last flag on this sprite. This is what the game will use to know the player
+has won the game.</p>
+<p>Add <code>game_win</code> and <code>game_over</code> to <code>_init</code> in the <code>game loop</code> <strong>tab 0</strong>.</p>
+<pre><code class="language-lua">function _init()
+ map_setup()
+ make_player()
+
+ game_win=false
+ game_over=false
+end
+</code></pre>
+<p>Add a new code tab to hold the win/lose code. This will be <strong>tab 5</strong>.</p>
+<p>In this tab, add two new functions: <code>check_win_lose</code>, <code>draw_win_lose</code></p>
+<pre><code class="language-lua">-- win/lose code
+
+function check_win_lose()
+ if (is_tile(win,p.x,p.y)) then
+  game_win=true
+  game_over=true
+ elseif (is_tile(lose,p.x,p.y)) then
+  game_win=false
+  game_over=true
+ end
+end
+
+function draw_win_lose()
+ camera()
+ if (game_win) then
+  print(&quot;S you win! S&quot;,37,64,7)
+ else
+  print(&quot;game over!&quot;,38,64,7)
+ end
+end
+</code></pre>
+<p>Change <code>_update</code> to only run if not <code>game_over</code> and call <code>check_win_lose</code></p>
+<pre><code class="language-lua">function _update()
+ update_map()
+ move_player()
+ if (not game_over) then
+  update_map()
+  move_player()
+  check_win_lose()
+ end
+end
+</code></pre>
+<p>Change <code>_draw</code> to only draw if not <code>game_over</code> else <code>draw_win_lose</code></p>
+<pre><code class="language-lua">function _draw()
+ cls()
+ draw_map()
+ draw_player()
+ if (btn(X)) show_inventory()
+ if (not game_over) then
+  draw_map()
+  draw_player()
+  if (btn(X)) show_inventory()
+ else
+  draw_win_lose()
+ end
+end
+</code></pre>
+<h2 id="end-result-8"><a class="header" href="#end-result-8">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
+to walk into spikes to lose and walk into the target to win. Next, we will add a way
+to easily reset the game.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_09.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="trying-again"><a class="header" href="#trying-again">Trying Again</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2UDThoTpxOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Add a way for the player to restart the game when they win or lose.</p>
+<p>Add the following else condition to the <code>_update</code> function.</p>
+<pre><code class="language-lua">else
+ if (btnp(X)) extcmd(&quot;reset&quot;)
+</code></pre>
+<p>Add the following code to the <code>draw_win_lose</code> function</p>
+<pre><code class="language-lua">print(&quot;press X to play again&quot;,20,72,5)
+</code></pre>
+<h2 id="end-result-9"><a class="header" href="#end-result-9">End Result</a></h2>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
+to have reset the game after winning or losing.</p>
+<p>Congratualations! This marks the point where you have a fully functional game!</p>
+<p>You have an interactive world with a goal, obstacles to achieving that goal, the
+ability for the player to win or lose, and the ability to reset the game after
+a game over event.</p>
+<p>Next, we will add text to the world to enable you to provide the player more
+guidance on what to do in the game.</p>
+<iframe width="750px" height="680px" src="./adventuregame_step_10.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bonus-step-adding-text"><a class="header" href="#bonus-step-adding-text">Bonus Step: Adding Text</a></h1>
+<p>This step will be a bit more involved than the previous steps. If you have
+made it to this step, you will definitely be able to complete it. Just take
+it slow and don't rush.</p>
+<p>In <code>map_setup</code>, we have an unused sprite type (<code>5</code>). We are going to use this
+to trigger the display of text to the user.</p>
+<p>This opens up a world of possibilities. It allows to add Non-Player Characters
+(NPCs) that can speak with your character. Signs can provide instructions or
+warnings. You are able to tell your character's back story through dialog or notes or other narrative devices.</p>
+<h1 id="result"><a class="header" href="#result">Result</a></h1>
+<iframe width="750px" height="680px" src="./adventuregame_bonus_step_text.html"></iframe>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="bonus-step-unlimited-sprite-types"><a class="header" href="#bonus-step-unlimited-sprite-types">Bonus Step: Unlimited Sprite Types</a></h1>
+<p>We have been using sprite flags to differentiate between the different sprite
+types. This limits us to a maximum of 8 sprite types.</p>
+<p>To overcome this limitation and support an unlimited number of sprite types,
+we are going to switch from using sprite flags to explicitly enumerating all
+of the sprites of each type.</p>
+<p>In <code>map_setup</code>, we currently have this mapping of sprite types to their flags.</p>
+<pre><code class="language-lua">wall=0
+key=1
+door=2
+anim1=3
+anim2=4
+lose=6
+win=7
+</code></pre>
+<p>Change each of these to be a list of all of the sprite numbers for each sprite
+of that type. If you very closely followed along to this point, you should be
+able to copy these values. If you were more casual in where you placed each
+sprite type, your numbers will be different. Check each of these values against
+your setup.</p>
+<pre><code class="language-lua">wall={18,32,33,34,36,37,50,52}
+key={20,36}
+door={52}
+anim1={23}
+anim2={24}
+lose={23}
+win={7}
+</code></pre>
+<p>Replace the call to <code>fget</code> in <code>is_tile</code> in tab <code>1</code> with this:</p>
+<pre><code class="language-lua">for i=1,#tile_type do
+ if (tile == tile_type[i]) return true
+end
+return false
+</code></pre>
+<p>Once you have made these changes, hit <code>ctrl-s</code> to save your game and <code>ctrl-r</code>
+to run it.</p>
+<p>You will want to test to verify that all of the sprite types work. That means
+you will want to:</p>
+<ul>
+<li>Attempt to walk into all wall tile types (e.g. water, wall)</li>
+<li>Pick up all key tile types (e.g. the key and the chest)</li>
+<li>Step on all spike tile types</li>
+<li>Walk on all non-wall types (e.g. grass, stone)</li>
+</ul>
+<p>If a tile isn't behaving as you expect, double check that the number for the
+sprite is in the correct list in <code>map_setup</code>.</p>
+<h1 id="new-tile-type"><a class="header" href="#new-tile-type">New Tile Type</a></h1>
+<p>Once you have verified all sprite types work, lets make use of the added
+flexibility by adding a new sprite type.</p>
+<p>We are going to change the chest so it gives us gold instead of a key. Modify
+<code>map_setup</code>. Remove sprite <code>36</code> (the chest) from the key list.</p>
+<pre><code class="language-lua">key={20}
+</code></pre>
+<p>and add it to a newly created <code>gold</code> list.</p>
+<pre><code class="language-lua">gold={36}
+</code></pre>
+<p>Picking up gold does us no good, if we don't keep track of it. Lets modify
+<code>make_player</code> in tab <code>2</code>. Put this at the end of the function.</p>
+<pre><code class="language-lua">p.gold=0
+</code></pre>
+<p>With a place to store it, we can add a function to allow us to get it. Copy
+<code>get_key</code> in tab <code>1</code> and modify it to create <code>get_gold</code>.</p>
+<pre><code class="language-lua">function get_gold(x,y)
+ p.gold+=5
+ swap_tile(x,y)
+ sfx(1)
+end
+</code></pre>
+<pre><code class="language-lua">function interact(x,y)
+ if (is_tile(key,x,y)) then
+  get_key(x,y)
+ elseif (is_tile(door,x,y) and...
+  open_door(x,y)
+ elseif (is_tile(gold,x,y))
+  get_gold(x,y)
+ end
+</code></pre>
+<p>Now we just need to update <code>show_inventory</code> in tab <code>3</code> to show the player how
+much gold they have. Start by making the rectangle <code>6</code> pixels taller by changing
+<code>invy+24</code> to <code>invy+30</code>. Then add this line to the end of the function.</p>
+<pre><code class="language-lua">print(&quot;gold &quot;, .p.gold,invx+12, invy+20,9)
+</code></pre>
+<p>Save and run the game. The gold in the player's inventory should start out at
+<code>0</code>. Open the chest and show the inventory. It should show <code>5</code> gold.</p>
+<p>If you made it to this point, congratulations! You now have the ability to add
+an unlimited number of sprite types. Here are just a few of the possibilities:</p>
+<ul>
+<li>Chests that hold specific items</li>
+<li>Chests that hold a variable amount of gold</li>
+<li>Keys that only open certain chests or doors</li>
+<li>Items needed to complete quests</li>
+<li>etc</li>
+</ul>
+<h1 id="result-1"><a class="header" href="#result-1">Result</a></h1>
+<iframe width="750px" height="680px" src="./adventuregame_bonus_step_more_tiles.html"></iframe>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
