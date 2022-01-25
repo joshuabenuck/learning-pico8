@@ -220,6 +220,6 @@ end
 Hit `ctrl-r` to run it (or use the `run` command). You should see a
 multi-colored circle that you can move around with the arrow keys.
 
-![Move Circle](/overview/overview/pico8_move_circle.png)
+![Move Circle](/overview/pico8_move_circle.png)
 
 Run `save move_circle` if you want to save it.
