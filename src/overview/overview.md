@@ -31,24 +31,24 @@ You will be greeted with the `favorites` view. It will be empty to start.
 Whenever you select a cart, you will be able to tag it as a favorite so it
 shows up here.
 
-![Favorites](splore_favorites.png)
+![Favorites](/overview/splore_favorites.png)
 
 Pressing the `right` arrow takes you to the *Game Jam* section. These are carts
 created during *Game Jams* which are time limited competitions where
 participants write a game using a common theme as inspiration.
 
-![Game Jams](splore_jam.png)
+![Game Jams](/overview/splore_jam.png)
 
 Press 'right' to see a list of randomly chosen games. If you are tired of going
 through the featured list, this is sometimes a good way to find something new.
 
-![Lucky Draw](splore_lucky.png)
+![Lucky Draw](/overview/splore_lucky.png)
 
 Press 'right' again to go to a list of `new` games. These are the most recent
 community uploads. The quality of the games in this list is going to be hit or
 miss. Not all of them will be complete.
 
-![New](splore_new.png)
+![New](/overview/splore_new.png)
 
 Press 'right' again to see my favorite list, the `featured` list. These are
 usually very high quality games or demos that highlight what is possible using
@@ -57,39 +57,39 @@ that catch their eye.
 
 We will return to this list shortly.
 
-![Featured](splore_featured.png)
+![Featured](/overview/splore_featured.png)
 
 The next section is one that lets you search for games. This is helpful if you
 have a particular game you are trying to find or want to see what the community
 has made on a specific topic.
 
-![!Search](splore_search.png)
+![!Search](/overview/splore_search.png)
 
 The final section lets you browse your local files. These are the same files
 you will see by running `ls` from the command prompt.
 
-![Folders](splore_folders.png)
+![Folders](/overview/splore_folders.png)
 
 # Browsing Games
 
 Let's go back to the `featured` list. Press `enter` to update the list. This
 requires Internet access! It will data about a number of games.
 
-![Featured](splore_featured.png)
+![Featured](/overview/splore_featured.png)
 
 If you don't have Internet access, run the `install_demos` command to install
 and run a few demo carts.
 
-![Install Demos](pico8_jelpi.png)
+![Install Demos](/overview/pico8_jelpi.png)
 
 Use the arrow keys to navigate the list.
 
-![Browse](splore_browse.png)
+![Browse](/overview/splore_browse.png)
 
 If you press `enter` on a game, you will have the option to `run` or `favorite`
 the game.
 
-![Options](splore_options.png)
+![Options](/overview/splore_options.png)
 
 Choosing `run` will start the game. Most games give show a title screen and
 main menu. Some, like `flip knight` do not. Nearly all games can be controlled
@@ -97,11 +97,11 @@ using a combination of the arrow keys and the action keys (z and x). z maps to
 `X` and x maps to `O`. When in doubt, just start pressing the action keys to
 see what happens!
 
-![Run](splore_run.png)
+![Run](/overview/splore_run.png)
 
 Press `esc` and choose `exit to splore` if you want to exit the game.
 
-![Run Options](splore_run_options.png)
+![Run Options](/overview/splore_run_options.png)
 
 # Editing a Downloaded Game
 
@@ -116,7 +116,7 @@ Internet access). Once it is running, hit `esc`. If it gives you the option to
 should put you at a prompt. (It is the `> ` at the top of this next
 screenshot.)
 
-![Prompt](splore_prompt.png)
+![Prompt](/overview/splore_prompt.png)
 
 Now, hit `esc` to go into the code editor. This shows you all of the code in
 the game you were running most recently.
@@ -127,7 +127,7 @@ The currently active tool is highlighted in the top right corner of the screen
 If the game makes use of mulitple code tabs, these will appear in the top left.
 The game in the screenshot only has a single code tab (labeled `0`).
 
-![Code Editor](pico8_code.png)
+![Code Editor](/overview/pico8_code.png)
 
 To see the sprites (which include character and background graphics), click on
 the face icon in the top right. It is just to the right of the `()` icon.
@@ -149,21 +149,21 @@ selection, movement, and paint bucket tool (among others).
 Zoom levels, sprite pages, and sprite flags are also on this page, but those
 will be discussed when and where they are used in the tutorials.
 
-![Sprite Editor](pico8_sprites.png)
+![Sprite Editor](/overview/pico8_sprites.png)
 
 Sprites don't do us much good if they are not placed in a world. Most PICO-8
 carts make use of the built-in map memory to display their sprites. The map
 editor is to the right of the sprite editor. Click on it!
 
-![Map Editor](pico8_map.png)
+![Map Editor](/overview/pico8_map.png)
 
 To the right of the map editor is the sound editor. Click on it!
 
-![Sound Editor](pico8_sound.png)
+![Sound Editor](/overview/pico8_sound.png)
 
 To the right of the sound editor is the music editor. Click on it!
 
-![Music Editor](pico8_music.png)
+![Music Editor](/overview/pico8_music.png)
 
 Those are all of the built-in tools. The [PICO-8
 Manual](https://www.lexaloffle.com/dl/docs/pico-8_manual.html) provides more
@@ -220,6 +220,6 @@ end
 Hit `ctrl-r` to run it (or use the `run` command). You should see a
 multi-colored circle that you can move around with the arrow keys.
 
-![Move Circle](overview/pico8_move_circle.png)
+![Move Circle](/overview/overview/pico8_move_circle.png)
 
 Run `save move_circle` if you want to save it.
