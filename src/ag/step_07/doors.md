@@ -34,3 +34,5 @@ Save your changes with **ctrl+S**. Run them with **ctrl+R**. You should now be a
 to pick up a key and use it to unlock a door.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_07.html"></iframe>
+<a href="./adventuregame_step_07.p8.png" target="_blank">Download</a>
+

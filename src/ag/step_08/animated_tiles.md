@@ -78,4 +78,5 @@ should change about once every second, but there still isn't a way to win the
 game. Lets add that next.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_08.html"></iframe>
+<a href="./adventuregame_step_08.p8.png" target="_blank">Download</a>
 

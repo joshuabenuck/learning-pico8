@@ -36,4 +36,5 @@ to pick up a key and then press `X` to see how many keys the player has in their
 inventory. Next, lets add a way for the player to use the keys they collect.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_06.html"></iframe>
+<a href="./adventuregame_step_06.p8.png" target="_blank">Download</a>
 

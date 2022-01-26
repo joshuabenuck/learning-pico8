@@ -55,5 +55,6 @@ to have your character pick up keys, but you will not be able to see how many ke
 your character is holding. We will fix that in the next section.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_05.html"></iframe>
+<a href="./adventuregame_step_05.p8.png" target="_blank">Download</a>
 
 

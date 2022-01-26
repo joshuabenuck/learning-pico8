@@ -52,3 +52,4 @@ player displayed on the map. The player cannot move around yet. We'll add some
 movement to the player in the next section.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_02.html"></iframe>
+<a href="./adventuregame_step_02.p8.png" target="_blank">Download</a>

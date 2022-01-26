@@ -28,5 +28,6 @@ to interact with it isn't all that interesting so lets add some things the playe
 can pick up in the next section.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_04.html"></iframe>
+<a href="./adventuregame_step_04.p8.png" target="_blank">Download</a>
 
 

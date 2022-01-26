@@ -64,4 +64,5 @@ no longer able to see them. In the next section, we will make the camera follow
 the player so we can explore more of the map.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_03.html"></iframe>
+<a href="./adventuregame_step_03.p8.png" target="_blank">Download</a>
 
