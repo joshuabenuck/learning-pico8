@@ -3,6 +3,10 @@
 This page contains a collection of resources you can use to further your
 journey with PICO-8.
 
+## Game Development with PICO-8
+
+[A 72-page zine](https://mboffin.itch.io/gamedev-with-pico-8-issue1) about doing game development with PICO-8.
+
 ## PicoZines
 
 This is a collection of freely downloadable magazines about PICO-8 programming.
