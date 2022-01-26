@@ -4,6 +4,10 @@
 
 Create a sound effect for bumping into an obstacle.
 
+Do this by going to the sound editor. Change the settings of the sounds to
+match those you see in the screenshot. Press `space` to play your sound to test
+it out.
+
 <img src="./sound_bump.png" style="min_width: 400px; max-width: 800px"/>
 
 Add two functions `is_tile` and `can_move` to the map code tab.

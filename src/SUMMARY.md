@@ -14,3 +14,4 @@
   - [Trying Again](./ag/step_10/trying_again.md)
   - [Bonus Step: Adding Text](./ag/step_11/bonus_adding_text.md)
   - [Bonus Step: Unlimited Sprite Types](./ag/step_12/bonus_unlimited_sprite_types.md)
+- [Resources](./resources/resources.md)

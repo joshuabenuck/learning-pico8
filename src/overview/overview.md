@@ -39,18 +39,18 @@ participants write a game using a common theme as inspiration.
 
 ![Game Jams](/overview/splore_jam.png)
 
-Press 'right' to see a list of randomly chosen games. If you are tired of going
+Press `right` to see a list of randomly chosen games. If you are tired of going
 through the featured list, this is sometimes a good way to find something new.
 
 ![Lucky Draw](/overview/splore_lucky.png)
 
-Press 'right' again to go to a list of `new` games. These are the most recent
+Press `right` again to go to a list of `new` games. These are the most recent
 community uploads. The quality of the games in this list is going to be hit or
 miss. Not all of them will be complete.
 
 ![New](/overview/splore_new.png)
 
-Press 'right' again to see my favorite list, the `featured` list. These are
+Press `right` again to see my favorite list, the `featured` list. These are
 usually very high quality games or demos that highlight what is possible using
 PICO-8. My kids greatly enjoy going through this list and playing the games
 that catch their eye.
