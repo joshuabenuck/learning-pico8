@@ -56,7 +56,7 @@ end
 ```
 
 ## Map Code
-Create code that draws the map. Click the **+** button to create a new tab. Put this code in the **1** tab of the code editor.
+Create the code that draws the map. Click the **+** button to create tab **1** and put this code in that tab.
 
 ```lua
 --map code
@@ -74,7 +74,7 @@ end
 
 function draw_map()
  map(0,0,0,0,128,64)
-ends
+end
 ```
 
 ## End Result

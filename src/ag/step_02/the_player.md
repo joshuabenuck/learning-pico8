@@ -6,7 +6,7 @@ Draw a sprite for the player.
 
 <img src="./player_sprite.png"/>
 
-Click on the **+** in the code editor to add a new tab. This will be used for the code related to the player.
+Click on the **+** in the code editor to creat tab **2**. This will be used for the code related to the player.
 
 
 ```lua
