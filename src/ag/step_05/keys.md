@@ -58,3 +58,8 @@ your character is holding. We will fix that in the next section.
 <a href="./adventuregame_step_05.p8.png" target="_blank">Download</a>
 
 
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

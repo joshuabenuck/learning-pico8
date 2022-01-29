@@ -66,3 +66,8 @@ the player so we can explore more of the map.
 <iframe width="750px" height="680px" src="./adventuregame_step_03.html"></iframe>
 <a href="./adventuregame_step_03.p8.png" target="_blank">Download</a>
 
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

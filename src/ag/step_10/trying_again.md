@@ -33,3 +33,8 @@ guidance on what to do in the game.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_10.html"></iframe>
 <a href="./adventuregame_step_10.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

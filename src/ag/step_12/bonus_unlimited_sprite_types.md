@@ -117,3 +117,8 @@ an unlimited number of sprite types. Here are just a few of the possibilities:
 <iframe width="750px" height="680px" src="./adventuregame_bonus_step_more_tiles.html"></iframe>
 <a href="./adventuregame_bonus_step_more_tiles.p8.png" target="_blank">Download</a>
 
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

@@ -88,3 +88,8 @@ to easily reset the game.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_09.html"></iframe>
 <a href="./adventuregame_step_09.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

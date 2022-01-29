@@ -31,3 +31,8 @@ can pick up in the next section.
 <a href="./adventuregame_step_04.p8.png" target="_blank">Download</a>
 
 
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

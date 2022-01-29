@@ -80,3 +80,8 @@ end
 ## End Result
 <iframe width="750px" height="680px" src="./adventuregame_step_01.html"></iframe>
 <a href="./adventuregame_step_01.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```
