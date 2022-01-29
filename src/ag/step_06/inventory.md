@@ -2,9 +2,11 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZF8exnHMQRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-When the player holds down the X key we'll show how many keys the player has in their inventory.
+When the player holds down the `X` key we'll show how many keys the player has
+in their inventory.
 
-Create a new tab called inventory code and in in put a new function called `show_inventory`.
+Create a new tab called inventory code. It shoudl be tab `3`. Add a function
+called `show_inventory` to it.
 
 ```lua
 function show_inventory()
@@ -18,7 +20,7 @@ end
 ```
 
 Then call this function from the `_draw` function.
-You can use shift-x to get the `X` button.
+You can use shift-x to get the `X` glyph.
 
 ```lua
 function _draw()
