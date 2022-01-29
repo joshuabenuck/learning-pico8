@@ -2,9 +2,18 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9EiXQxfK05I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-We'll add doors that they player can open with their keys. First draw a pair if sprites, one for a closed door and, next to it, one for an open door.
+What good are keys if you cannot do anything with them?
 
-Add a sound effect for opening a door.
+Let's fix this by adding doors that the player can open with their keys. First draw a pair of sprites: an closed and an opened door. Just like with the key and chest sprites, be sure to put them right next to each other. This allows us to use the `swap_tile` function to open a door.
+
+![Closed Door](./door_closed.png)
+
+![Opened Door](./door_opened.png)
+
+Add a sound effect for opening a door. This should be sound `02`. Replicate
+what is in the screenshot or create your own custom door opening sound.
+
+![Open Door Sound](./open_door_sound.png)
 
 Add a function `open_door` to open the door to the map code tab.
 
@@ -30,8 +39,8 @@ end
 
 ## End Result
 
-Save your changes with **ctrl+S**. Run them with **ctrl+R**. You should now be able
-to pick up a key and use it to unlock a door.
+Save your changes with **ctrl+S**. Run them with **ctrl+R**. You should now be
+able to pick up a key and use it to unlock a door.
 
 <iframe width="750px" height="680px" src="./adventuregame_step_07.html"></iframe>
 <a href="./adventuregame_step_07.p8.png" target="_blank">Download</a>
