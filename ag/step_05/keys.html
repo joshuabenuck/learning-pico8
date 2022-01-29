@@ -137,9 +137,37 @@
                     <main>
                         <h1 id="keys"><a class="header" href="#keys">Keys</a></h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8RXnQYXufB8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>Draw a sprite for a key and a sprite for a chest. The key can be picked up and the chest can be opened. When the player interacts with these items they are replaced by the sprite to the right, so you will need to draw two additional sprites.</p>
-<p>The key is replaced by grass and the chest is replaced by an open chest.</p>
+<p>We are going to add items for our player to interact with in our world. One
+will be a key they can pick up. The other will be a chest they can open.</p>
+<p>You will need to draw two sprites for each of them.</p>
+<p>For the key, the first will be what the key looks like when it can be picked
+up. The second will be what the tile should look like after the key has been
+picked up. In the example, it looks just like the grass tile.</p>
+<p>You may ask, why not just reuse the grass tile? Why draw a duplicate? The
+reason is that it greatly simplifies the code we have to write to handle
+picking up keys.</p>
+<p>Whenever the player interacts with a key tile in our world, we will simply
+replace the sprite that received the interaction with the sprite immediately to
+the right of it in the sprite sheet.</p>
+<p>This means that it is <strong>very</strong> important that the tile without the key be
+immediately to the right of the tile with the key!</p>
+<p>Go ahead a draw the two key sprites now. You will want to set sprite flag 1 on
+the key (but not the tile without the key). Sprite flag 1 is what we use to
+determine if the player can interact with a tile.</p>
+<p><img src="./key.png" alt="Key" /></p>
+<p><img src="./key_picked_up.png" alt="Picked Up Key" /></p>
+<p>For the chest, we need a sprite showing a closed chest and one showing an open
+one. The closed chest needs to have sprite flag 1 set on it.</p>
+<p>Just as with the key sprites, it is <strong>very</strong> important that the closed chest
+sprite be immediately to the right of the open chest sprite.</p>
+<p><img src="./chest.png" alt="Chest" /></p>
+<p><img src="./chest_opened.png" alt="Chest Opened" /></p>
 <p>Make a sound effect for the pick-up key sound.</p>
+<p>Go to the sound editor. Switch from sound <code>00</code> to sound <code>01</code>. Try replicating
+what is shown in the screenshot or feel free to make up your own sound.</p>
+<p><img src="./pick_up_sound.png" alt="Pick Up Sound" /></p>
+<p>Now we need to add the code that allows the player to pick up keys. Interacting
+with either the key on the ground or the chest will give the player a key.</p>
 <p>Add two functions, <code>swap_tile</code> and <code>get_key</code>, to the map code tab.</p>
 <pre><code class="language-lua">function swap_tile(x,y)
  tile=mget(x,y)
@@ -152,31 +180,149 @@ function get_key(x,y)
  sfx(1)
 end
 </code></pre>
-<p>Add a function, interact to the player code tab.</p>
+<p>The <code>swap_tile</code> function replaces the current tile with the tile immediately to
+the right of it in the sprite sheet. This is why we had to draw the key and
+chest variants where we did.</p>
+<p>The <code>get_key</code> function increases the count of the keys the player is carrying
+by one, swaps the tile to show that the player successfully interacted with the
+tile, and plays a sound to give an audible indication of the action.</p>
+<p>Just adding these two functions changes nothing in our code. We have to call
+one of them from somewhere.</p>
+<p>Add a function called <code>interact</code> to the player code tab.</p>
 <pre><code class="language-lua">function interact(x,y)
  if (is_tile(key,x,y)) then
   get_key(x,y)
  end
 end
 </code></pre>
-<p>Now call this function from the <code>mode_player</code> function.</p>
+<p>This function checks to see if the tile is a key tile. If it is, it calls the
+<code>get_key</code> function to pick up the key.</p>
+<p>Now call this function from the <code>move_player</code> function.</p>
 <pre><code class="language-lua">function move_player()
  newx=p.x
  newy=p.y
 
- if (btnp(⬅️)) newx-=1
- if (btnp(➡️)) newx+=1
- if (btnp(⬆️)) newy-=1
- if (btnp(⬇️)) newy+=1
+ if (btnp(L)) newx-=1
+ if (btnp(R)) newx+=1
+ if (btnp(U)) newy-=1
+ if (btnp(D)) newy+=1
 
  interact(newx,newy)
 </code></pre>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
-<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
-to have your character pick up keys, but you will not be able to see how many keys
-your character is holding. We will fix that in the next section.</p>
+<p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be
+able to have your character pick up keys, but you will not be able to see how
+many keys your character is holding. We will fix that in the next section.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_05.html"></iframe>
 <a href="./adventuregame_step_05.p8.png" target="_blank">Download</a>
+<h2 id="source-code"><a class="header" href="#source-code">Source Code</a></h2>
+<p>Here is the full source code for this step. If you want your code to match what
+is shown in the tutorial, everything after a <code>--&gt;8</code> line should go in a new
+tab. This is not necessary, but failure to do so will make your code harder to
+navigate, reason about, and edit.</p>
+<p><strong>Note:</strong> The tool used to extract the full code listings does not properly
+handle PICO-8's glyph characters. All glyph characters are replaced with an
+<code>_</code>. You will need to manually replace them with the correct character.</p>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+ make_player()
+end
+
+function _update()
+ move_player()
+end
+
+function _draw()
+ cls()
+ draw_map()
+ draw_player()
+end
+
+
+--&gt;8
+--map code
+
+function map_setup()
+ --map tile settings
+ wall=0
+ key=1
+ door=2
+ anim1=3
+ anim2=4
+ lose=6
+ win=7
+end
+
+function draw_map()
+ mapx=flr(p.x/16)*16
+ mapy=flr(p.y/16)*16
+ camera(mapx*8,mapy*8)
+
+ map(0,0,0,0,128,64)
+end
+
+function is_tile(tile_type,x,y)
+ tile=mget(x,y)
+ has_flag=fget(tile,tile_type)
+ return has_flag
+end
+
+function can_move(x,y)
+ return not is_tile(wall,x,y)
+end
+
+function swap_tile(x,y)
+ tile=mget(x,y)
+ mset(x,y,tile+1)
+end
+
+function get_key(x,y)
+ p.keys+=1
+ swap_tile(x,y)
+ sfx(1)
+end
+--&gt;8
+--player code
+
+function make_player()
+ p={}
+ p.x=3
+ p.y=2
+ p.sprite=1
+ p.keys=0
+end
+
+function draw_player()
+ spr(p.sprite,p.x*8,p.y*8)
+end
+
+function move_player()
+ newx=p.x
+ newy=p.y
+ 
+ if (btnp(_)) newx-=1
+ if (btnp(_)) newx+=1
+ if (btnp(_)) newy-=1
+ if (btnp(_)) newy+=1
+ 
+ interact(newx,newy)
+ 
+ if (can_move(newx,newy)) then
+  p.x=mid(0,newx,127)
+  p.y=mid(0,newy,63)
+ else
+  sfx(0)
+ end
+end
+
+function interact(x,y)
+ if (is_tile(key,x,y)) then
+  get_key(x,y)
+ end
+end
+</code></pre>
 
                     </main>
 

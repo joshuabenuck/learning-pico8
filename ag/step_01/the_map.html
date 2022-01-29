@@ -196,6 +196,48 @@ end
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./adventuregame_step_01.html"></iframe>
 <a href="./adventuregame_step_01.p8.png" target="_blank">Download</a>
+<h2 id="source-code"><a class="header" href="#source-code">Source Code</a></h2>
+<p>Here is the full source code for this step. If you want your code to match what
+is shown in the tutorial, everything after a <code>--&gt;8</code> line should go in a new
+tab. This is not necessary, but failure to do so will make your code harder to
+navigate, reason about, and edit.</p>
+<p><strong>Note:</strong> The tool used to extract the full code listings does not properly
+handle PICO-8's glyph characters. All glyph characters are replaced with an
+<code>_</code>. You will need to manually replace them with the correct character.</p>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+end
+
+function _update()
+end
+
+function _draw()
+ cls()
+ draw_map()
+end
+
+
+--&gt;8
+--map code
+
+function map_setup()
+ --map tile settings
+ wall=0
+ key=1
+ door=2
+ anim1=3
+ anim2=4
+ lose=6
+ win=7
+end
+
+function draw_map()
+ map(0,0,0,0,128,64)
+end
+
+</code></pre>
 
                     </main>
 

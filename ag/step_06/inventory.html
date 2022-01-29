@@ -137,8 +137,10 @@
                     <main>
                         <h1 id="inventory"><a class="header" href="#inventory">Inventory</a></h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZF8exnHMQRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>When the player holds down the X key we'll show how many keys the player has in their inventory.</p>
-<p>Create a new tab called inventory code and in in put a new function called <code>show_inventory</code>.</p>
+<p>When the player holds down the <code>X</code> key we'll show how many keys the player has
+in their inventory.</p>
+<p>Create a new tab called inventory code. It shoudl be tab <code>3</code>. Add a function
+called <code>show_inventory</code> to it.</p>
 <pre><code class="language-lua">function show_inventory()
  invx=mapx*8+40
  invy=mapy*8+8
@@ -149,7 +151,7 @@
 end
 </code></pre>
 <p>Then call this function from the <code>_draw</code> function.
-You can use shift-x to get the <code>X</code> button.</p>
+You can use shift-x to get the <code>X</code> glyph.</p>
 <pre><code class="language-lua">function _draw()
  cls()
  draw_map()
@@ -163,6 +165,126 @@ to pick up a key and then press <code>X</code> to see how many keys the player h
 inventory. Next, lets add a way for the player to use the keys they collect.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_06.html"></iframe>
 <a href="./adventuregame_step_06.p8.png" target="_blank">Download</a>
+<h2 id="source-code"><a class="header" href="#source-code">Source Code</a></h2>
+<p>Here is the full source code for this step. If you want your code to match what
+is shown in the tutorial, everything after a <code>--&gt;8</code> line should go in a new
+tab. This is not necessary, but failure to do so will make your code harder to
+navigate, reason about, and edit.</p>
+<p><strong>Note:</strong> The tool used to extract the full code listings does not properly
+handle PICO-8's glyph characters. All glyph characters are replaced with an
+<code>_</code>. You will need to manually replace them with the correct character.</p>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+ make_player()
+end
+
+function _update()
+ move_player()
+end
+
+function _draw()
+ cls()
+ draw_map()
+ draw_player()
+ if (btn(_)) show_inventory()
+end
+
+
+--&gt;8
+--map code
+
+function map_setup()
+ --map tile settings
+ wall=0
+ key=1
+ door=2
+ anim1=3
+ anim2=4
+ lose=6
+ win=7
+end
+
+function draw_map()
+ mapx=flr(p.x/16)*16
+ mapy=flr(p.y/16)*16
+ camera(mapx*8,mapy*8)
+
+ map(0,0,0,0,128,64)
+end
+
+function is_tile(tile_type,x,y)
+ tile=mget(x,y)
+ has_flag=fget(tile,tile_type)
+ return has_flag
+end
+
+function can_move(x,y)
+ return not is_tile(wall,x,y)
+end
+
+function swap_tile(x,y)
+ tile=mget(x,y)
+ mset(x,y,tile+1)
+end
+
+function get_key(x,y)
+ p.keys+=1
+ swap_tile(x,y)
+ sfx(1)
+end
+--&gt;8
+--player code
+
+function make_player()
+ p={}
+ p.x=3
+ p.y=2
+ p.sprite=1
+ p.keys=0
+end
+
+function draw_player()
+ spr(p.sprite,p.x*8,p.y*8)
+end
+
+function move_player()
+ newx=p.x
+ newy=p.y
+ 
+ if (btnp(_)) newx-=1
+ if (btnp(_)) newx+=1
+ if (btnp(_)) newy-=1
+ if (btnp(_)) newy+=1
+ 
+ interact(newx,newy)
+ 
+ if (can_move(newx,newy)) then
+  p.x=mid(0,newx,127)
+  p.y=mid(0,newy,63)
+ else
+  sfx(0)
+ end
+end
+
+function interact(x,y)
+ if (is_tile(key,x,y)) then
+  get_key(x,y)
+ end
+end
+--&gt;8
+--inventory code
+
+function show_inventory()
+ invx=mapx*8+40
+ invy=mapy*8+8
+ 
+ rectfill(invx,invy,invx+48,invy+24,0)
+ print(&quot;inventory&quot;,invx+7,invy+4,7)
+ print(&quot;keys &quot;..p.keys,invx+12,invy+14,9)
+end
+</code></pre>
 
                     </main>
 

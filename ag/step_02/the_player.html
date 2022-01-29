@@ -177,6 +177,66 @@ player displayed on the map. The player cannot move around yet. We'll add some
 movement to the player in the next section.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_02.html"></iframe>
 <a href="./adventuregame_step_02.p8.png" target="_blank">Download</a>
+<h2 id="source-code"><a class="header" href="#source-code">Source Code</a></h2>
+<p>Here is the full source code for this step. If you want your code to match what
+is shown in the tutorial, everything after a <code>--&gt;8</code> line should go in a new
+tab. This is not necessary, but failure to do so will make your code harder to
+navigate, reason about, and edit.</p>
+<p><strong>Note:</strong> The tool used to extract the full code listings does not properly
+handle PICO-8's glyph characters. All glyph characters are replaced with an
+<code>_</code>. You will need to manually replace them with the correct character.</p>
+<pre><code class="language-lua">--game loop
+
+function _init()
+ map_setup()
+ make_player()
+end
+
+function _update()
+end
+
+function _draw()
+ cls()
+ draw_map()
+ draw_player()
+end
+
+
+--&gt;8
+--map code
+
+function map_setup()
+ --map tile settings
+ wall=0
+ key=1
+ door=2
+ anim1=3
+ anim2=4
+ lose=6
+ win=7
+end
+
+function draw_map()
+ map(0,0,0,0,128,64)
+end
+
+--&gt;8
+--player code
+
+function make_player()
+ p={}
+ p.x=3
+ p.y=2
+ p.sprite=1
+ p.keys=0
+end
+
+function draw_player()
+ spr(p.sprite,p.x*8,p.y*8)
+end
+
+
+</code></pre>
 
                     </main>
 
