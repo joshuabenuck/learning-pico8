@@ -14,7 +14,7 @@
   - [Trying Again](./ag/step_10/trying_again.md)
   - [Bonus Step: Adding Text](./ag/step_11/bonus_adding_text.md)
   - [Bonus Step: Unlimited Sprite Types](./ag/step_12/bonus_unlimited_sprite_types.md)
-- [DRAFT: A Spaceshooter in 16 Steps](./ss/intro/intro.md)
+- [A Space Shooter in 16 Steps](./ss/intro/intro.md)
   - [Draw Ship on Screen](./ss/step_01/draw_ship.md)
   - [Animate Propulsion](./ss/step_02/animate_propulsion.md)
   - [Basic Ship Movement](./ss/step_03/ship_movement.md)
