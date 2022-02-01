@@ -53,3 +53,11 @@ Hit `ctrl-r` to run the game. A ship will appear with an animated jetstream!
 
 <div><img src="./anim.gif" width=512" /></div>
 
+## End Result
+<iframe width="750px" height="680px" src="./ss_02.html"></iframe>
+<a href="./ss_02.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

@@ -48,6 +48,13 @@ techniques you have all you need to create a variety of games.
 This toolset was created by Dylan Bennett. He is the author of the Adventure
 Game Tutorial content on this site.
 
+## Demo-Man Tutorials
+
+This is a [series of tutorials](https://demoman.net/) implemented in a bunch of
+slides, but with the interactive elements of each slide in a PICO-8 web hosted
+cart! Check them out! Topics range from PICO-8 specifics to math, animation,
+and collision detection.
+
 ## PICO-8 Music Tutorials
 
 [55
@@ -55,3 +62,16 @@ videos](https://www.youtube.com/playlist?list=PLur95ujyAigsqZR1aNTrVGAvXD7EqywdS
 on Youtube by Gruber. These walk you through the sound and music editors. He
 also has a variety of remakes of popular songs elsewhere in his channel that
 are worth checking out.
+
+## PICO-8 Roguelike Tutorial
+
+A roguelike is a dungeon crawler game with permament death (you lose your
+progress when you die). This is a well regarded [video
+tutorial](https://www.youtube.com/playlist?list=PLea8cjCua_P3LL7J1Q9b6PJua0A-96uUS)
+(in 54 parts!) by Laze Devs.
+
+## PICO-8 Breakout Tutorial
+
+Another video tutorial by Lazy Devs. This one has [78
+parts](https://www.youtube.com/playlist?list=PLea8cjCua_P0qjjiG8G5FBgqwpqMU7rBk)!
+

@@ -27,3 +27,11 @@ If it is, it changes the pixel coordinate of the ship by `1` in the appropriate
 direction.
 
 Hit `ctrl-r` to run your cart and try it out!
+## End Result
+<iframe width="750px" height="680px" src="./ss_03.html"></iframe>
+<a href="./ss_03.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

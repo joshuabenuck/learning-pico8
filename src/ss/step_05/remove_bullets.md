@@ -84,3 +84,11 @@ being tracked to exceed the number of bullets on the screen.
 
 The numbers now match no matter how many bullets we fire. Success! Bug fixed
 and crisis averted!
+## End Result
+<iframe width="750px" height="680px" src="./ss_05.html"></iframe>
+<a href="./ss_05.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

@@ -40,3 +40,11 @@ in a circular pattern.
 
 The enemies cannot hurt the player and vice versa. Come to think of it, the player doesn't even have any health. Let's explore that next.
 
+## End Result
+<iframe width="750px" height="680px" src="./ss_07.html"></iframe>
+<a href="./ss_07.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

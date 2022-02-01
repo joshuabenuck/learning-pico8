@@ -43,3 +43,11 @@ able to destroy them and they don't move, but it is a start!
 
 <div><img src="./result.png" width="512" /></div>
 
+## End Result
+<iframe width="750px" height="680px" src="./ss_06.html"></iframe>
+<a href="./ss_06.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```

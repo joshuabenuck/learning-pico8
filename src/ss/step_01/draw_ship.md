@@ -36,3 +36,11 @@ coordinates in the `ship` table. **Note:** if your ship is not in the sprite
 sheet at location `001` (as shown in the screenshot above), you will need to
 change the first parameter to `spr` to match.
 
+## End Result
+<iframe width="750px" height="680px" src="./ss_01.html"></iframe>
+<a href="./ss_01.p8.png" target="_blank">Download</a>
+
+{{#include ../source_code.md}}
+```lua
+{{#include listing.md}}
+```
