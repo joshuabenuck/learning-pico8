@@ -28,13 +28,13 @@ function respawn()
  for i=1,n do
   local d=-1
   if rnd(1)<0.5 then d=1 end
-  add(enemies, {
+  add(enemies,{
    sp=17,
    m_x=i*16,
    m_y=-20-i*8,
    d=d,
-   x=-32
-   y=-32
+   x=-32,
+   y=-32,
    r=12,
    box={x1=0,y1=0,x2=7,y2=7}
   })
@@ -55,7 +55,7 @@ for e in all(enemies) do
  e.m_y+=1.3
  e.x=e.r*sin(e.d*t/50)+e.m_x
  e.y=e.r*cos(t/50)+e.m_y
- if coll(ship,e) and not ship.emm then
+ if coll(ship,e) and not ship.imm then
   ship.imm=true
   ship.h-=1
   if ship.h<=0 then

@@ -28,7 +28,7 @@ ship={
 Add a `box` property to the enemies.
 
 ```lua
-add(enemies, {
+add(enemies,{
  sp=17,
  m_x=i*16,
  m_y=60-i*8,
@@ -53,6 +53,7 @@ function fire()
   dy=-3,
   box={x1=2,y1=0,x2=5,y2=4}
  }
+ add(bullets,b)
 end
 ```
 
@@ -67,6 +68,17 @@ coordinates of the box.
 That is what this function does. It adds an object's `x` and `y` coordinates to
 the `box`'s properties. It translates from the *relative* coordinates of the
 box to its *absolute* coordinates.
+
+```lua
+function abs_box(s)
+ local box={}
+ box.x1=s.box.x1+s.x
+ box.y1=s.box.y1+s.y
+ box.x2=s.box.x2+s.x
+ box.y2=s.box.y2+s.y
+ return box
+end
+```
 
 This next change sets us up for calculating whether there was a collision
 between two boxes. It takes two entities (`A` and `B`) and gets the screen

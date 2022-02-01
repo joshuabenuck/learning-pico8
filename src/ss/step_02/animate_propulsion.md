@@ -30,10 +30,11 @@ Enter this code on tab **0** in the code editor.
 ```lua
 t=0
 function _init()
+ cls()
  ship={sp=1,x=60,y=60}
 end
 
-function_update()
+function _update()
  t=t+1
  if(t%6<3) then
   ship.sp=1

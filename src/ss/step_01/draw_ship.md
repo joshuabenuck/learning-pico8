@@ -22,7 +22,8 @@ function _init()
 end
 
 function _draw()
- spr(1,ship.x,ship.y}
+ cls()
+ spr(1,ship.x,ship.y)
 end
 ```
 

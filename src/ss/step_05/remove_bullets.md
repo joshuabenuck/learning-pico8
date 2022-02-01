@@ -41,7 +41,7 @@ should only ever go up.
 ```lua
 function _draw()
  cls()
- print(#bullets,9)
+ print(#bullets,6)
 ```
 
 Hit `ctrl-r` to run the game and fire some bullets.
@@ -52,8 +52,6 @@ In the screenshot above, we have fired a total of `10` bullets, but only `3`
 are visible on the screen. This clearly indicates the problem. We should only
 be tracking bullets that are visible. Anything that has gone off the screen is
 a waste of memory and processing time.
-
-<div><img src="./code2.png" width="512" /></div>
 
 That gives us an outline of what the fix should be. Let's implement it.
 

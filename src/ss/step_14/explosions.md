@@ -55,7 +55,7 @@ In `draw_game`, add a loop to draw all of the explosions.
 ```lua
 function draw_game()
  cls()
- print(ship.p,9)
+ print(ship.p,6)
  if not ship.imm or t%8<4 then
   spr(ship.sp,ship.x,ship.y)
  end

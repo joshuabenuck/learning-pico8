@@ -21,6 +21,9 @@ function _init()
   h=3,
   p=0
  }
+ bullets={}
+ enemies={}
+ for i=1,4 d
 ```
 
 The variable `t` is now initialized within `_init`. This is just good practice.
@@ -51,7 +54,7 @@ been scored.
 ```lua
 function _draw()
  cls()
- print(ship.p,9)
+ print(ship.p,6)
 ```
 
 Let's prep for the addition of collision detection. Put this function above the `fire` function.

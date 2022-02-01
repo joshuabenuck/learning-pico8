@@ -70,7 +70,7 @@ In `draw_game`, only draw the ship if it is not invulnerable or for ever other f
 ```lua
 function draw_game()
  cls()
- print(ship.p,9)
+ print(ship.p,6)
  if not ship.imm or t%8<4 then
   spr(ship.sp,ship.x,ship.y)
  end

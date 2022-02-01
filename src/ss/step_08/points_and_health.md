@@ -22,6 +22,7 @@ The player will have a total of `4` possible hearts. Let's give them `3` so we c
 
 ```lua
 function _init()
+ cls()
  ship={sp=1,x=60,y=60,h=3}
 ```
 

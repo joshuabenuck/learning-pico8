@@ -18,7 +18,7 @@ function coll(a,b)
  if box_a.x1>box_b.x2 or
     box_a.y1>box_b.y2 or
     box_b.x1>box_a.x2 or
-    box_b.y1>box_a.y2
+    box_b.y1>box_a.y2 then
     return false
  end
  
@@ -50,7 +50,7 @@ for b in all(bullets) do
 end
 ```
 
-Hit `ctrl-r` to run the game. Fire a few bullets with `x`. When one of them
+Hit `ctrl-r` to run the game. Fire a few bullets with `X`. When one of them
 hits an enemey, the enemy should disappear. The score should increment by one
 with each enemy you destroy.
 

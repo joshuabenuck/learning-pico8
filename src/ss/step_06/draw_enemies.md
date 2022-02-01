@@ -12,10 +12,11 @@ Start by adding a table to track enemies. Populate it with `10` enemies.
 
 ```lua
 function _init()
+ cls()
  ship={sp=1,x=60,y=60}
  bullets={}
  enemies={}
- for i=i,10 do
+ for i=1,10 do
   add(enemies, {
    sp=17,
    x=i*16,

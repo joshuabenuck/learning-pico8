@@ -8,8 +8,6 @@
 
 [Image](./tut_4.git) ([Original Source](https://ztiromoritz.github.io/pico-8-shooter/gif/tut_4.gif))
 
-<div><img src="./code1.png" width="512"/></div>
-
 Update `_init` to have a table to hold information about all of the bullets.
 
 ```lua
@@ -19,8 +17,9 @@ function _init()
 end
 ```
 
-Now add a `fire` function to create a new bullet and add it to the bullets
-table.
+Now add a `fire` function right after `_init`. It creates a new bullet and add
+it to the bullets table.
+
 ```lua
 function fire()
  local b={
@@ -28,15 +27,15 @@ function fire()
   x=ship.x,     -- start bullets at the ship's location
   y=ship.y,
   dx=0,
-  dx=-3,        -- bullets move up from the ships location
+  dy=-3,        -- bullets move up from the ships location
  }
  add(bullets,b) -- add bullet to the table of bullets
 end
 ```
-<div><img src="./code2.png" width="512"/></div>
 
-Bullets move after being fired. This is an update operation and not a draw
-operation so we will add it in `_update`.
+`sp` is the sprite to display. `x` and `y` indicate where to display the ship on the screen. `dy` is how far to move the bullets up the screen on each frame.
+
+Bullets move after being fired. Add the code to do that in `_update`.
 
 ```lua
 function _update()
@@ -56,12 +55,10 @@ if btnp(X) then fire() end
 
 **Note:** We use `btnp` instea of `btn` to limit the rate of firing. 
 
-<div><img src="./code3.png" width="512"/></div>
-
 Let's display the bullets.
 
 ```lua
-function _draw
+function _draw()
  cls()
  spr(ship.sp,ship.x,ship.y)
  for b in all(bullets) do

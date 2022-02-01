@@ -53,7 +53,7 @@ function draw_game()
   pset(st.x,st.y,6)
  end
 
- print(ship.p,9)
+ print(ship.p,6)
 ```
 
 Hit `ctrl-r` to run the game. You should see a continually moving star field

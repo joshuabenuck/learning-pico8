@@ -11,13 +11,13 @@
 In `_init`, update the enemy creation code.
 
 ```lua
-for i=i,10 do
- add(enemies, {
+for i=1,10 do
+ add(enemies,{
   sp=17,
   m_x=i*16,
   m_y=60-i*8,
-  x=-32
-  y=-32
+  x=-32,
+  y=-32,
   r=12
  })
 end
