@@ -3,13 +3,14 @@
 [Overview](./overview/overview.md)
 - [The Community](./community/intro.md)
   - [Splore](./community/splore.md)
-<!--  - [Homepage](./community/homepage.md)
+<!--
+  - [Homepage](./community/homepage.md)
   - [The BBS](./community/bbs.md)
   - [Included Demos](./community/demos.md)
   - [Demakes](./community/demakes.md)
   - [Pushing the Limits](./community/pushing_the_limits.md)
+-->
 - [Using PICO-8](./using/intro.md)
-  - [Command Prompt](./using/command_prompt.md)
   - [Limitations](./using/limitations.md)
   - [Code Editor](./using/code_editor.md)
   - [Sprite Editor](./using/sprite_editor.md)
@@ -19,6 +20,7 @@
   - [Coordinates](./using/coordinates.md)
   - [Programming Basics](./using/programming_basics.md)
   - [The Game Loop](./using/the_game_loop.md)
+<!--
 - [Cave Diver](./cd/intro/intro.md)
   - [The Player](./cd/step_01/the_player.md)
   - [Jump!](./cd/step_02/jump.md)
