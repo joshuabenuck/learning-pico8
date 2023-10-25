@@ -1,0 +1,211 @@
+@font-face {
+  font-family: "PICO-8";
+  src: url("pico-8.ttf");
+}
+
+/*body {
+  font-family: "Open Sans", sans-serif;
+  max-width: 750px;
+  padding: 0 15px;
+  margin-left: auto;
+  margin-right: auto;
+}*/
+
+::selection {
+  background: #000;
+  color: #ffffff;
+}
+
+.pico8-src {
+  font-family: "PICO-8";
+  padding: 5px;
+  width: 300px;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pico8-snippet {
+  font-family: "PICO-8";
+  padding: 5px;
+  font-size: 0.60em;
+}
+
+.grid-carousel {
+  display: grid;
+  grid-template-columns: .1fr 1fr .1fr;
+  grid-gap: 10px;
+  margin-bottom: 10px;
+}
+
+@media(min-width: 600px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.src-c {
+}
+
+video,
+img {
+  width: 266px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pico8-snippet > div,
+.pico8-src > div {
+  margin-bottom:5px;
+  white-space: pre;
+  tab-size:1;
+}
+
+.add {
+}
+
+.mod {
+}
+
+.lea {
+  opacity: 60%;
+}
+
+.del {
+  text-decoration-line: line-through;
+  text-decoration-thickness:2px;
+  opacity:85%;
+}
+
+.c00b {
+  background-color: #000000;
+}
+
+.pico8-src, .pico8-snippet, .c01b {
+  background-color: #1D2B53;
+}
+
+.c02b {
+  background-color: #7E2553;
+}
+
+.c03b {
+  background-color: #008751;
+}
+
+.c04b {
+  background-color: #AB5236;
+}
+
+.c05b {
+  background-color: #5F574F;
+}
+
+.c06b {
+  background-color: #C2C3C7;
+}
+
+.c07b {
+  background-color: #FFF1E8;
+}
+
+.c08b {
+  background-color: #FF004D;
+}
+
+.c09b {
+  background-color: #FFA300;
+}
+
+.c10b {
+  background-color: #FFEC27;
+}
+
+.c11b {
+  background-color: #00E436;
+}
+
+.c12b {
+  background-color: #29aDFF;
+}
+
+.c13b {
+  background-color: #83769C;
+}
+
+.c14b {
+  background-color: #FF77A8;
+}
+
+.c15b {
+  background-color: #FFCCAA;
+}
+
+.c00t {
+  color: #000000;
+}
+
+.c01t {
+  color: #1D2B53;
+}
+
+.c02t {
+  color: #7E2553;
+}
+
+.c03t {
+  color: #008751;
+}
+
+.c04t {
+  color: #AB5236;
+}
+
+.c05t {
+  color: #5F574F;
+}
+
+.c06t {
+  color: #C2C3C7;
+}
+
+.c07t {
+  color: #FFF1E8;
+}
+
+.del,
+.c08t {
+  color: #FF004D;
+}
+
+.c09t {
+  color: #FFA300;
+}
+
+.c10t {
+  color: #FFEC27;
+}
+
+.c11t {
+  color: #00E436;
+}
+
+.c12t {
+  color: #29aDFF;
+}
+
+.c13t {
+  color: #83769C;
+}
+
+.c14t {
+  color: #FF77A8;
+}
+
+.c15t {
+  color: #FFCCAA;
+}
