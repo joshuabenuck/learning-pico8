@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -158,19 +159,35 @@ second represents the loss of a heart. These should be placed at locations
 <div><img src="./heart1.png" width="512" /></div>
 <div><img src="./heart2.png" width="512" /></div>
 <p>The player will have a total of <code>4</code> possible hearts. Let's give them <code>3</code> so we can test the display of the missing heart.</p>
-<pre><code class="language-lua">function _init()
- cls()
- ship={sp=1,x=60,y=60,h=3}
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">={</span><span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span><span class="c06t">h</span><span class="c07t">=</span><span class="c12t">3</span><span class="c07t">}</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>At the end of <code>_draw</code>, add the hearts display logic.</p>
-<pre><code class="language-lua">for i=1,4 do
- if i&lt;=ship.h then
-  spr(33,80+6*i,3)
- else
-  spr(34,80+6*i,3)
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c12t">4 </span><span class="c14t">do</span>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">i</span><span class="c07t"><=</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">h </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c11t">spr</span><span class="c07t">(</span><span class="c12t">33</span><span class="c07t">,</span><span class="c12t">80</span><span class="c07t">+</span><span class="c12t">6</span><span class="c07t">*</span><span class="c06t">i</span><span class="c07t">,</span><span class="c12t">3</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">else</span>
+</div>
+<div>  <span class="c11t">spr</span><span class="c07t">(</span><span class="c12t">34</span><span class="c07t">,</span><span class="c12t">80</span><span class="c07t">+</span><span class="c12t">6</span><span class="c07t">*</span><span class="c06t">i</span><span class="c07t">,</span><span class="c12t">3</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Press <code>ctrl-r</code> to run the game. You should see <code>3</code> red hearts and <code>1</code> gray
 heart in the upper right corner. The hearts should display <strong>on top of</strong> any
 enemies that pass by. If not, double check you added the hearts display logic
@@ -186,6 +203,7 @@ unlocks much of what follows it.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_08.html"></iframe>
 <a href="./ss_08.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -233,6 +251,7 @@ unlocks much of what follows it.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

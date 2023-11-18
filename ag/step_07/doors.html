@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -152,27 +153,46 @@
 <p>Add a sound effect for opening a door. This should be sound <code>02</code>. Replicate
 what is in the screenshot or create your own custom door opening sound.</p>
 <p><img src="./open_door_sound.png" alt="Open Door Sound" /></p>
-<p>Add a function <code>open_door</code> to open the door to the map code tab.</p>
-<pre><code class="language-lua">function open_door(x,y)
- p.keys-=1
- swap_tile(x,y)
- sfx(2)
-end
-</code></pre>
-<p>This function gets called in the interact function.</p>
-<pre><code class="language-lua">function interact(x,y)
- if (is_tile(key,x,y)) then
-  get_key(x,y)
- elseif (is_tile(door,x,y) and p.keys&gt;0) then
-  open_door(x,y)
- end
-end
-</code></pre>
+<p>Add a function <code>open_door</code> to open the door to the <code>map code</code> tab (<strong>tab 1</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">open</span><span class="c07t">_</span><span class="c06t">door</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">keys</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c06t">swap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">2</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>This function gets called in the <code>interact</code> function, which is in the <code>player code</code> tab (<strong>tab 2</strong>)..</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c06t">interact</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div class="lea"> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">key</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)) </span><span class="c14t">then</span>
+</div>
+<div class="lea">  <span class="c06t">get</span><span class="c07t">_</span><span class="c06t">key</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div class="add"> <span class="c14t">elseif </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">door</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">) </span><span class="c14t">and </span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">keys</span><span class="c07t">></span><span class="c12t">0</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div class="add">  <span class="c06t">open</span><span class="c07t">_</span><span class="c06t">door</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div class="lea"> <span class="c14t">end</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be
 able to pick up a key and use it to unlock a door.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_07.html"></iframe>
 <a href="./adventuregame_step_07.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -220,6 +240,7 @@ able to pick up a key and use it to unlock a door.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

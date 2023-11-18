@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -154,11 +155,18 @@
 <p>At the end of the <code>_update</code> function, add an <code>if</code> statement for each arrow key.</p>
 <p><strong>Tip:</strong> After typing the first <code>if</code> statement, hit <code>ctrl-d</code> to duplicate the
 first line. Then edit the new line. This will save you some typing.</p>
-<pre><code class="language-lua">if btn(L) then ship.x-=1 end
-if btn(R) then ship.x+=1 end
-if btn(U) then ship.y-=1 end
-if btn(D) then ship.y+=1 end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">L</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div><span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">R</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div><span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">U</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div><span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">D</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>On each frame, <code>_update</code> new checks to see if an arrow key is being held down.
 If it is, it changes the pixel coordinate of the ship by <code>1</code> in the appropriate
 direction.</p>
@@ -166,6 +174,7 @@ direction.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_03.html"></iframe>
 <a href="./ss_03.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -213,6 +222,7 @@ direction.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

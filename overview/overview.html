@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pico-8.css">
 
     </head>
     <body>
@@ -217,7 +218,7 @@ modifications more difficult than normal.</p>
 then use <code>save</code> to save the cart under a different name. Then feel free to make
 the changes you want. Try them out by pressing <code>ctrl-r</code> or using the <code>run</code>
 command. If you decide you don't like your changes, <code>load</code> your previously
-saved version. If you like them, save them with <code>ctrl-s</code> or the `save command.</p>
+saved version. If you like them, save them with <code>ctrl-s</code> or the <code>save</code> command.</p>
 <h1 id="creating-your-own-games"><a class="header" href="#creating-your-own-games">Creating Your Own Games</a></h1>
 <p>Now that we have explored an exist cart. Let's try making a simple cart.</p>
 <p>Get to the prompt and run <code>reboot</code>. This will reset PICO-8.</p>
@@ -228,30 +229,53 @@ saved version. If you like them, save them with <code>ctrl-s</code> or the `save
 <li>shift-U = <code>U</code></li>
 <li>shift-D = <code>D</code></li>
 </ul>
-<pre><code class="language-lua">function _init()
- col=7
- x=10
- y=10
-end
-
-function _update()
- if btn(L) then x-=1 end
- if btn(R) then x+=1 end
- if btn(U) then y-=1 end
- if btn(D) then y+=1 end
-end
-
-function _draw()
- cls()
- for i=1,5 do
-  circfill(x,y,10-i*2,col+i)
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">col</span><span class="c07t">=</span><span class="c12t">7</span>
+</div>
+<div> <span class="c06t">x</span><span class="c07t">=</span><span class="c12t">10</span>
+</div>
+<div> <span class="c06t">y</span><span class="c07t">=</span><span class="c12t">10</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">L</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">x</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div> <span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">R</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">x</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div> <span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">U</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">y</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div> <span class="c14t">if </span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">D</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">y</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c12t">5 </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c11t">circfill</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c12t">10</span><span class="c07t">-</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">2</span><span class="c07t">,</span><span class="c06t">col</span><span class="c07t">+</span><span class="c06t">i</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run it (or use the <code>run</code> command). You should see a
 multi-colored circle that you can move around with the arrow keys.</p>
 <p><img src="/overview/pico8_move_circle.png" alt="Move Circle" /></p>
 <p>Run <code>save move_circle</code> if you want to save it.</p>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -293,6 +317,7 @@ multi-colored circle that you can move around with the arrow keys.</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../pico-8.js"></script>
 
 
     </body>

@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -150,42 +151,80 @@
 match those you see in the screenshot. Press <code>space</code> to play your sound to test
 it out.</p>
 <img src="./sound_bump.png" style="min_width: 400px; max-width: 800px"/>
-<p>Add two functions <code>is_tile</code> and <code>can_move</code> to the map code tab.</p>
-<pre><code class="language-lua">function is_tile(tile_type,x,y)
- tile=mget(x,y)
- has_flag=fget(tile,tile_type)
- return has_flag
-end
-
-function can_move(x,y)
- return not is_tile(wall, x, y)
-end
-</code></pre>
-<p>Add a function for moving the player to the player code tab.</p>
+<p>Add two functions <code>is_tile</code> and <code>can_move</code> to the <code>map code</code> tab (<strong>tab 1</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">has</span><span class="c07t">_</span><span class="c06t">flag</span><span class="c07t">=</span><span class="c06t">fget</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">return has</span><span class="c07t">_</span><span class="c06t">flag</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">return </span><span class="c14t">not </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">wall</span><span class="c07t">, </span><span class="c06t">x</span><span class="c07t">, </span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Add a function for moving the player to the <code>player code</code> tab (<strong>tab 2</strong>).</p>
 <p><em>Note:</em> to get the arrow characters, use <strong>shift+L</strong>, <strong>shift+R</strong>, <strong>shift+U</strong>, <strong>shift+D</strong>.</p>
-<pre><code class="language-lua">function move_player()
- newx=p.x
- newy=p.y
-
- if (btnp(L)) newx-=1
- if (btnp(R)) newx+=1
- if (btnp(U)) newy-=1
- if (btnp(D)) newy+=1
-
- if can_move(newx,newy) then
-  p.x=mid(0,newx,127)
-  p.y=mid(0,newy,63)
- else
-  sfx(0)
- end
-
-end
-</code></pre>
-<p>Call this function from function update in the game loop tab.</p>
-<pre><code class="language-lua">function _update()
- move_player()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">newx</span><span class="c07t">=</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span>
+</div>
+<div> <span class="c06t">newy</span><span class="c07t">=</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">L</span><span class="c07t">)) </span><span class="c06t">newx</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">R</span><span class="c07t">)) </span><span class="c06t">newx</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">U</span><span class="c07t">)) </span><span class="c06t">newy</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">D</span><span class="c07t">)) </span><span class="c06t">newy</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
+</div>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">else</span>
+</div>
+<div>  <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Call this function from function update in the <code>game loop</code> tab (<strong>tab 0</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+s</strong>. Run them with <strong>ctrl+r</strong>. You should now be able
 to move your player around the screen, but once you go off of the screen, you are
@@ -193,6 +232,7 @@ no longer able to see them. In the next section, we will make the camera follow
 the player so we can explore more of the map.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_03.html"></iframe>
 <a href="./adventuregame_step_03.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -240,6 +280,7 @@ the player so we can explore more of the map.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

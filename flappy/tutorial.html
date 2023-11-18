@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pico-8.css">
 
     </head>
     <body>
@@ -290,6 +291,8 @@ We are going to use a bit of a unique approach to the pipes. Internally, we will
 </div>
 <div class="lea">	<span class="c06t">y</span><span class="c07t">=</span><span class="c12t">64</span>
 </div>
+<div class="lea">	<span class="c06t">dy</span><span class="c07t">=</span><span class="c12t">2</span>
+</div>
 <div class="lea">	<span class="c06t">dx</span><span class="c07t">=</span><span class="c12t">2</span>
 </div>
 <div class="add">	<span class="c06t">pw</span><span class="c07t">=</span><span class="c12t">16</span>
@@ -485,6 +488,8 @@ Let's add a score to keep track of how many times we pass a pipe without getting
 </div>
 <div class="lea">	<span class="c06t">y</span><span class="c07t">=</span><span class="c12t">64</span>
 </div>
+<div class="lea">	<span class="c06t">dy</span><span class="c07t">=</span><span class="c12t">2</span>
+</div>
 <div class="lea">	<span class="c06t">dx</span><span class="c07t">=</span><span class="c12t">2</span>
 </div>
 <div class="lea">	<span class="c06t">pw</span><span class="c07t">=</span><span class="c12t">16</span>
@@ -651,11 +656,11 @@ If you want a laugh, change <span class="pico8-snippet"><span class="c06t">y</sp
 </div>
 <div>	<span class="c06t">y</span><span class="c07t">=</span><span class="c12t">64</span>
 </div>
+<div>	<span class="c06t">dy</span><span class="c07t">=</span><span class="c12t">2</span>
+</div>
 <div>	<span class="c06t">dx</span><span class="c07t">=</span><span class="c12t">2</span>
 </div>
 <div>	<span class="c06t">pw</span><span class="c07t">=</span><span class="c12t">16</span>
-</div>
-<div>	<span class="c06t">dy</span><span class="c07t">=</span><span class="c12t">2</span>
 </div>
 <div>	<span class="c06t">s</span><span class="c07t">=</span><span class="c12t">0</span>
 </div>
@@ -764,6 +769,7 @@ Here is a very polished flappy bird like cart to give you additional ideas. Note
 You have already duplicated the core mechanics of this game! The rest is just additional incremental changes to the foundation you already have! Take it a step at a time. Think about the next small change you want to see and devise as small an experiment as possible to try it out. Rinse, repeat, and rejoice!
 </p>
 <script type="text/javascript" src="pico-8.js"></script>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -811,6 +817,7 @@ You have already duplicated the core mechanics of this game! The rest is just ad
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../pico-8.js"></script>
 
 
     </body>

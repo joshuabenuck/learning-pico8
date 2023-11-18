@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -152,44 +153,81 @@
 <p><a href="./tut_13.git">Image</a> (<a href="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_13.gif">Original Source</a>)</p>
 <p>Let's make it possible to lose the game!</p>
 <p>Start by adding two properties to the <code>ship</code>. <code>t</code> will be used in some animation calculations. <code>imm</code> is used to indicate if the ship is temporarily invulnerable.</p>
-<pre><code class="language-lua">ship={
- sp=1,
- x=60,
- y=100,
- h=4,
- p=0,
- t=0,
- imm=false,
- box={x1=0,y1=0,x2=7,y2=7}
-}
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">ship</span><span class="c07t">={</span>
+</div>
+<div> <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">y</span><span class="c07t">=</span><span class="c12t">100</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">h</span><span class="c07t">=</span><span class="c12t">4</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">imm</span><span class="c07t">=</span><span class="c06t">false</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">={</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">,</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">}</span>
+</div>
+<div><span class="c07t">}</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>The <code>h=4</code> in the above snippet isn't a typo. Having the starting number of ship
 hearts set to <code>3</code> was great for testing the missing heart display
 functionality, but we've done that so we no longer need to penalize the player,
 especially since we are about to enable them to get hurt!</p>
 <p>A couple of steps back, we added a placeholder to check if the ship collided with any enemies. It is time to implement that logic. Add this to <code>update_game</code>.</p>
-<pre><code class="language-lua">function update_game()
- t=t+1
- if ship.imm then
-  ship.t+=1
-  if ship.t&gt;30 then
-    ship.imm=false
-    ship.t=0
-  end
- end
-
- for e in all(enemies) do
-  e.x=e.r*sin(t/50)+e.m_x
-  e.y=e.r*cos(t/50)+e.m_y
-  if coll(ship,e) and not ship.imm then
-   ship.imm=true
-   ship.h-=1
-   if ship.h&lt;=0 then
-    game_over()
-   end
-  end
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">game</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c06t">t</span><span class="c07t">+</span><span class="c12t">1</span>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">></span><span class="c12t">30 </span><span class="c14t">then</span>
+</div>
+<div>    <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm</span><span class="c07t">=</span><span class="c06t">false</span>
+</div>
+<div>    <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">e </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">sin</span><span class="c07t">(</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">x</span>
+</div>
+<div>  <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">cos</span><span class="c07t">(</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">) </span><span class="c14t">and not </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm </span><span class="c14t">then</span>
+</div>
+<div>   <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div>   <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">h</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div>   <span class="c14t">if </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">h</span><span class="c07t"><=</span><span class="c12t">0 </span><span class="c14t">then</span>
+</div>
+<div>    <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">()</span>
+</div>
+<div>   <span class="c14t">end</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>First, we check the <code>imm</code> flag. If it is set, the ship needs to be invulnerable
 for a full second (<code>30</code> frames). Once that time has passed, clear the flag and
 reset the <code>ship.t</code> counter.</p>
@@ -198,13 +236,22 @@ enemy. If so, set the <code>imm</code> flag to give the ship temporary invulnera
 Reduce the number of hearts by one. Check to see if we are out of hearts. If we
 are out of heats, transition to the <code>game over</code> state to let the player known.</p>
 <p>In <code>draw_game</code>, only draw the ship if it is not invulnerable or for ever other four frames, if it is.</p>
-<pre><code class="language-lua">function draw_game()
- cls()
- print(ship.p,6)
- if not ship.imm or t%8&lt;4 then
-  spr(ship.sp,ship.x,ship.y)
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">game</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">p</span><span class="c07t">,</span><span class="c12t">6</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">if not </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm </span><span class="c14t">or </span><span class="c06t">t</span><span class="c07t">%</span><span class="c12t">8</span><span class="c07t"><</span><span class="c12t">4 </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">sp</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run the game. Move the ship so it is in the path of the
 enemies. The number of hearts should reduce by one each time it is hit. After
 each hit, the ship should flash off and on periodically over a second before
@@ -218,6 +265,7 @@ and once all its hearts are lost, the game ends!</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_13.html"></iframe>
 <a href="./ss_13.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -265,6 +313,7 @@ and once all its hearts are lost, the game ends!</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

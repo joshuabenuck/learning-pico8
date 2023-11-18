@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -160,48 +161,91 @@ takes their place.</p>
 <p>Start by <em>deleting</em> the loop that creates the enemies out of <code>_init</code>. We are
 going to move it elsewhere.</p>
 <p>Create a <code>respawn</code> function just after <code>_init</code>.</p>
-<pre><code class="language-lua">function respawn()
- local n=flr(rnd(9))+2
- for i=1,n do
-  local d=-1
-  if rnd(1)&lt;0.5 then d=1 end
-  add(enemies,{
-   sp=17,
-   m_x=i*16,
-   m_y=-20-i*8,
-   d=d,
-   x=-32,
-   y=-32,
-   r=12,
-   box={x1=0,y1=0,x2=7,y2=7}
-  })
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">respawn</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">local n</span><span class="c07t">=</span><span class="c11t">flr</span><span class="c07t">(</span><span class="c11t">rnd</span><span class="c07t">(</span><span class="c12t">9</span><span class="c07t">))+</span><span class="c12t">2</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c06t">n </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">local d</span><span class="c07t">=-</span><span class="c12t">1</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c11t">rnd</span><span class="c07t">(</span><span class="c12t">1</span><span class="c07t">)<</span><span class="c12t">0.5 </span><span class="c14t">then </span><span class="c06t">d</span><span class="c07t">=</span><span class="c12t">1 </span><span class="c14t">end</span>
+</div>
+<div>  <span class="c06t">add</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">,{</span>
+</div>
+<div>   <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">17</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">m</span><span class="c07t">_</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">16</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span><span class="c07t">=-</span><span class="c12t">20</span><span class="c07t">-</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">d</span><span class="c07t">=</span><span class="c06t">d</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">x</span><span class="c07t">=-</span><span class="c12t">32</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">y</span><span class="c07t">=-</span><span class="c12t">32</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">r</span><span class="c07t">=</span><span class="c12t">12</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">box</span><span class="c07t">={</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">,</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">}</span>
+</div>
+<div>  <span class="c07t">})</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In <code>update_game</code>, add a check before the enemies loop to call <code>respawn</code> if
 there are no more enemies. Modify the enemies loop to randomize their movement
 patterns a bit and to remove enemies that have left the screen.</p>
-<pre><code class="language-lua">if #enemies&lt;=0 then
- respawn()
-end
-
-for e in all(enemies) do
- e.m_y+=1.3
- e.x=e.r*sin(e.d*t/50)+e.m_x
- e.y=e.r*cos(t/50)+e.m_y
- if coll(ship,e) and not ship.imm then
-  ship.imm=true
-  ship.h-=1
-  if ship.h&lt;=0 then
-   game_over()
-  end
- end
-
- if e.y&gt;150 then
-  del(enemies,e)
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">if </span><span class="c07t">#</span><span class="c06t">enemies</span><span class="c07t"><=</span><span class="c12t">0 </span><span class="c14t">then</span>
+</div>
+<div> <span class="c06t">respawn</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">for </span><span class="c06t">e </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div> <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span><span class="c07t">+=</span><span class="c12t">1.3</span>
+</div>
+<div> <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">sin</span><span class="c07t">(</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">d</span><span class="c07t">*</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">x</span>
+</div>
+<div> <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">cos</span><span class="c07t">(</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">) </span><span class="c14t">and not </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div>  <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">h</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">h</span><span class="c07t"><=</span><span class="c12t">0 </span><span class="c14t">then</span>
+</div>
+<div>   <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">></span><span class="c12t">150 </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">del</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run the game. After defeating all of the enemies on the screen
 or allowing them to go passed the ship off the bottom of the screen, more
 enemies should take their place. Their movement patterns should be a bit
@@ -251,6 +295,7 @@ story influence how you think about your game?</li>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_16.html"></iframe>
 <a href="./ss_16.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -298,6 +343,7 @@ story influence how you think about your game?</li>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

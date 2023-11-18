@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -151,25 +152,47 @@
 </video>
 <p><a href="./tut_6.git">Image</a> (<a href="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_6.gif">Original Source</a>)</p>
 <p>Start by adding a table to track enemies. Populate it with <code>10</code> enemies.</p>
-<pre><code class="language-lua">function _init()
- cls()
- ship={sp=1,x=60,y=60}
- bullets={}
- enemies={}
- for i=1,10 do
-  add(enemies, {
-   sp=17,
-   x=i*16,
-   y=60-i*8
-  })
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">={</span><span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">}</span>
+</div>
+<div> <span class="c06t">bullets</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c06t">enemies</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c12t">10 </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">add</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">, {</span>
+</div>
+<div>   <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">17</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">x</span><span class="c07t">=</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">16</span><span class="c07t">,</span>
+</div>
+<div>   <span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">-</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">8</span>
+</div>
+<div>  <span class="c07t">})</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>At the end of the <code>_draw</code> function, add code to display the enemies.</p>
-<pre><code class="language-lua">for e in all(enemies) do
- spr(e.sp,e.x,e.y)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">for </span><span class="c06t">e </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div> <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">sp</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Finally, let's add an enemy at location <code>017</code>.</p>
 <div><img src="./enemy.png" width="512" /></div>
 <p>Press <code>ctrl-r</code> to run the game and you should see some enemies! You won't be
@@ -178,6 +201,7 @@ able to destroy them and they don't move, but it is a start!</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_06.html"></iframe>
 <a href="./ss_06.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -225,6 +249,7 @@ able to destroy them and they don't move, but it is a start!</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -154,15 +155,26 @@
 <div><img src="./ship.png" width="512"/></div>
 <p>Go to the code editor and enter this code in tab <strong>0</strong>.</p>
 <p>Now let's draw the ship on the screen!</p>
-<pre><code class="language-lua">function _init()
- ship={x=60,y=60}
-end
-
-function _draw()
- cls()
- spr(1,ship.x,ship.y)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">={</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">}</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">spr</span><span class="c07t">(</span><span class="c12t">1</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>The <code>_init</code> function creates a table to hold properies for the ship. We will
 start with its <code>x</code> and <code>y</code> coordinates. This is how we will know where to draw
 the ship on the screen.</p>
@@ -173,6 +185,7 @@ change the first parameter to <code>spr</code> to match.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_01.html"></iframe>
 <a href="./ss_01.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -220,6 +233,7 @@ change the first parameter to <code>spr</code> to match.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

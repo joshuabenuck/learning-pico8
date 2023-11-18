@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pico-8.css">
 
     </head>
     <body>
@@ -148,22 +149,40 @@
 loop. The <code>_init()</code> function happens one time, then <code>_update()</code> and <code>_draw()</code>
 happen in a loop until your game ends.  Here's the basic structure of the
 PICO-8 game loop and what each functions does:</p>
-<pre><code class="language-lua">function _init()
- --code here one time
- --when your game starts.
-end
-
-function _update()
- --code here happens 30 times
- --every second.
-end
-
-function _draw()
- --code here also happens 30
- --time every second, but
- --after _update() happens.
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c13t">--code here one time</span>
+</div>
+<div> <span class="c13t">--when your game starts.</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c13t">--code here happens 30 times</span>
+</div>
+<div> <span class="c13t">--every second.</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c13t">--code here also happens 30</span>
+</div>
+<div> <span class="c13t">--time every second, but</span>
+</div>
+<div> <span class="c13t">--after _update() happens.</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>You <em>could</em> put all of your code inside these three functions, but it's
 generally not considered a good idea. A better solution is usually to make
 other functions that do specific things, and then have <code>_init()</code>, <code>_update()</code>,
@@ -171,36 +190,68 @@ or <code>_draw()</code> run those functions.</p>
 <p>For example, instead of putting player movement code in <code>_update()</code>, write your
 own function called <code>move_player()</code> and run that inside <code>_update()</code>.</p>
 <p>Here's an example of how it would all look. (Try it out! Type this code into PICO-8 and run it! Don't forget to make sprite #1!)</p>
-<pre><code class="language-lua">function _init()
- make_player()
-end
-
-function _update()
- move_player()
-end
-
-function _draw()
- cls() --clear screen
- draw_player()
-end
-
-function make_player()
- px=64
- py=64
- psprite=1
-end
-
-function move_player()
- if (btn(0)) px-=1 --left
- if (btn(1)) px+=1 --right
- if (btn(2)) py-=1 --up
- if (btn(3)) py+=1 --down
-end
-
-function draw_player()
- spr(psprite,px,py)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">make</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">() </span><span class="c13t">--clear screen</span>
+</div>
+<div> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">make</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">px</span><span class="c07t">=</span><span class="c12t">64</span>
+</div>
+<div> <span class="c06t">py</span><span class="c07t">=</span><span class="c12t">64</span>
+</div>
+<div> <span class="c06t">psprite</span><span class="c07t">=</span><span class="c12t">1</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">)) </span><span class="c06t">px</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c13t">--left</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c12t">1</span><span class="c07t">)) </span><span class="c06t">px</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c13t">--right</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c12t">2</span><span class="c07t">)) </span><span class="c06t">py</span><span class="c07t">-=</span><span class="c12t">1 </span><span class="c13t">--up</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c12t">3</span><span class="c07t">)) </span><span class="c06t">py</span><span class="c07t">+=</span><span class="c12t">1 </span><span class="c13t">--down</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">psprite</span><span class="c07t">,</span><span class="c06t">px</span><span class="c07t">,</span><span class="c06t">py</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>See how the game loop functions are kept nice and tidy? Now you can see a good
 overview of how the game works just from those three functions.</p>
 <p>When PICO-8 first came out, all your code went in one place. More recent
@@ -213,6 +264,7 @@ work with the code in the tutorial.</p>
 given here. As you work through them, you may discover other practices you wish
 were followed more consistently. Make a note of them and discuss them with your
 community. You may find others agree and start following your example!</p>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -260,6 +312,7 @@ community. You may find others agree and start following your example!</p>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../pico-8.js"></script>
 
 
     </body>

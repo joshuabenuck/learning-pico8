@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -151,47 +152,91 @@
 </video>
 <p><a href="./tut_4.git">Image</a> (<a href="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_4.gif">Original Source</a>)</p>
 <p>Update <code>_init</code> to have a table to hold information about all of the bullets.</p>
-<pre><code class="language-lua">function _init()
- ship={sp=1,x=60,y=60}
- bullets={}
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">={</span><span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">}</span>
+</div>
+<div> <span class="c06t">bullets</span><span class="c07t">={}</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Now add a <code>fire</code> function right after <code>_init</code>. It creates a new bullet and add
 it to the bullets table.</p>
-<pre><code class="language-lua">function fire()
- local b={
-  sp=3,         -- which sprite to display for bullets
-  x=ship.x,     -- start bullets at the ship's location
-  y=ship.y,
-  dx=0,
-  dy=-3,        -- bullets move up from the ships location
- }
- add(bullets,b) -- add bullet to the table of bullets
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">fire</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">local b</span><span class="c07t">={</span>
+</div>
+<div>  <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">3</span><span class="c07t">,         </span><span class="c13t">-- which sprite to display for bullets</span>
+</div>
+<div>  <span class="c06t">x</span><span class="c07t">=</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,     </span><span class="c13t">-- start bullets at the ship's location</span>
+</div>
+<div>  <span class="c06t">y</span><span class="c07t">=</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">dx</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">dy</span><span class="c07t">=-</span><span class="c12t">3</span><span class="c07t">,        </span><span class="c13t">-- bullets move up from the ships location</span>
+</div>
+<div> <span class="c07t">}</span>
+</div>
+<div> <span class="c06t">add</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">) </span><span class="c13t">-- add bullet to the table of bullets</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p><code>sp</code> is the sprite to display. <code>x</code> and <code>y</code> indicate where to display the ship on the screen. <code>dy</code> is how far to move the bullets up the screen on each frame.</p>
 <p>Bullets move after being fired. Add the code to do that in <code>_update</code>.</p>
-<pre><code class="language-lua">function _update()
- t=t+1
-
- for b in all(bullets) do
-  b.x+=b.dx
-  b.y+=b.dy
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c06t">t</span><span class="c07t">+</span><span class="c12t">1</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">b </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">b</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">+=</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">dx</span>
+</div>
+<div>  <span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">+=</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">dy</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>We will need a way to trigger the firing of a bullet. Add this <code>if</code> statement at the end of <code>_update</code>. It will cause a bullet to fire if you press <code>X</code>.</p>
-<pre><code class="language-lua">if btnp(X) then fire() end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">if </span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">X</span><span class="c07t">) </span><span class="c14t">then </span><span class="c06t">fire</span><span class="c07t">() </span><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p><strong>Note:</strong> We use <code>btnp</code> instea of <code>btn</code> to limit the rate of firing. </p>
 <p>Let's display the bullets.</p>
-<pre><code class="language-lua">function _draw()
- cls()
- spr(ship.sp,ship.x,ship.y)
- for b in all(bullets) do
-  spr(b.sp,b.x,b.y)
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">sp</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">b </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">sp</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Finally, let's actually create the bullet sprite so we have something to draw!</p>
 <div><img src="./bullet.png" width="512"/></div>
 <p>Hit <code>ctrl-r</code> to run the game and then press <code>X</code> a few times. You should see something like this.</p>
@@ -206,6 +251,7 @@ make it unplayable.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_04.html"></iframe>
 <a href="./ss_04.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -253,6 +299,7 @@ make it unplayable.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

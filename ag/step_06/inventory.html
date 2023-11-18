@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -147,32 +148,56 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZF8exnHMQRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>When the player holds down the <code>X</code> key we'll show how many keys the player has
 in their inventory.</p>
-<p>Create a new tab called inventory code. It shoudl be tab <code>3</code>. Add a function
+<p>Create a new tab for <code>inventory code</code>. It should be <strong>tab 3</strong>. Add a function
 called <code>show_inventory</code> to it.</p>
-<pre><code class="language-lua">function show_inventory()
- invx=mapx*8+40
- invy=mapy*8+8
-
- rectfill(invx,invy,invx+48,invy+24,0)
- print(&quot;inventory&quot;,invx+7,invy+4,7)
- print(&quot;keys &quot;..p.keys,invx+12,invy+14,9)
-end
-</code></pre>
-<p>Then call this function from the <code>_draw</code> function.
-You can use shift-x to get the <code>X</code> glyph.</p>
-<pre><code class="language-lua">function _draw()
- cls()
- draw_map()
- draw_player()
- if (btn(❎)) show_inventory()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">-- inventory code</span>
+</div>
+<div><span class="c14t">function </span><span class="c06t">show</span><span class="c07t">_</span><span class="c06t">inventory</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">invx</span><span class="c07t">=</span><span class="c06t">mapx</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">+</span><span class="c12t">40</span>
+</div>
+<div> <span class="c06t">invy</span><span class="c07t">=</span><span class="c06t">mapy</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">+</span><span class="c12t">8</span>
+</div>
+<div>
+</div>
+<div> <span class="c11t">rectfill</span><span class="c07t">(</span><span class="c06t">invx</span><span class="c07t">,</span><span class="c06t">invy</span><span class="c07t">,</span><span class="c06t">invx</span><span class="c07t">+</span><span class="c12t">48</span><span class="c07t">,</span><span class="c06t">invy</span><span class="c07t">+</span><span class="c12t">24</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"inventory"</span><span class="c07t">,</span><span class="c06t">invx</span><span class="c07t">+</span><span class="c12t">7</span><span class="c07t">,</span><span class="c06t">invy</span><span class="c07t">+</span><span class="c12t">4</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"keys "</span><span class="c07t">..</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">keys</span><span class="c07t">,</span><span class="c06t">invx</span><span class="c07t">+</span><span class="c12t">12</span><span class="c07t">,</span><span class="c06t">invy</span><span class="c07t">+</span><span class="c12t">14</span><span class="c07t">,</span><span class="c12t">9</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Then call this function from the <code>_draw</code> function in the <code>game loop</code> tab (<strong>tab 0</strong>).
+.
+You can use <strong>shift-x</strong> to get the <code>X</code> glyph.</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">X</span><span class="c07t">)) </span><span class="c06t">show</span><span class="c07t">_</span><span class="c06t">inventory</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
 to pick up a key and then press <code>X</code> to see how many keys the player has in their
 inventory. Next, lets add a way for the player to use the keys they collect.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_06.html"></iframe>
 <a href="./adventuregame_step_06.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -220,6 +245,7 @@ inventory. Next, lets add a way for the player to use the keys they collect.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

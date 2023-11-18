@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -150,69 +151,131 @@
 <p>Set the last flag on this sprite. This is what the game will use to know the player
 has won the game.</p>
 <p>Add <code>game_win</code> and <code>game_over</code> to <code>_init</code> in the <code>game loop</code> <strong>tab 0</strong>.</p>
-<pre><code class="language-lua">function _init()
- map_setup()
- make_player()
-
- game_win=false
- game_over=false
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">map</span><span class="c07t">_</span><span class="c06t">setup</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">make</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div>
+</div>
+<div> <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">=</span><span class="c06t">false</span>
+</div>
+<div> <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">=</span><span class="c06t">false</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Add a new code tab to hold the win/lose code. This will be <strong>tab 5</strong>.</p>
 <p>In this tab, add two new functions: <code>check_win_lose</code>, <code>draw_win_lose</code></p>
-<pre><code class="language-lua">-- win/lose code
-
-function check_win_lose()
- if (is_tile(win,p.x,p.y)) then
-  game_win=true
-  game_over=true
- elseif (is_tile(lose,p.x,p.y)) then
-  game_win=false
-  game_over=true
- end
-end
-
-function draw_win_lose()
- camera()
- if (game_win) then
-  print(&quot;S you win! S&quot;,37,64,7)
- else
-  print(&quot;game over!&quot;,38,64,7)
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">-- win/lose code</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">check</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">_</span><span class="c06t">lose</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">win</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div>  <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div> <span class="c14t">elseif </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">lose</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">=</span><span class="c06t">false</span>
+</div>
+<div>  <span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">_</span><span class="c06t">lose</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">camera</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">game</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"S you win! S"</span><span class="c07t">,</span><span class="c12t">37</span><span class="c07t">,</span><span class="c12t">64</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">else</span>
+</div>
+<div>  <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"game over!"</span><span class="c07t">,</span><span class="c12t">38</span><span class="c07t">,</span><span class="c12t">64</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Change <code>_update</code> to only run if not <code>game_over</code> and call <code>check_win_lose</code></p>
-<pre><code class="language-lua">function _update()
- update_map()
- move_player()
- if (not game_over) then
-  update_map()
-  move_player()
-  check_win_lose()
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">update</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c14t">not </span><span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">update</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c06t">check</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">_</span><span class="c06t">lose</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Change <code>_draw</code> to only draw if not <code>game_over</code> else <code>draw_win_lose</code></p>
-<pre><code class="language-lua">function _draw()
- cls()
- draw_map()
- draw_player()
- if (btn(X)) show_inventory()
- if (not game_over) then
-  draw_map()
-  draw_player()
-  if (btn(X)) show_inventory()
- else
-  draw_win_lose()
- end
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">X</span><span class="c07t">)) </span><span class="c06t">show</span><span class="c07t">_</span><span class="c06t">inventory</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c14t">not </span><span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btn</span><span class="c07t">(</span><span class="c06t">X</span><span class="c07t">)) </span><span class="c06t">show</span><span class="c07t">_</span><span class="c06t">inventory</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">else</span>
+</div>
+<div>  <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">win</span><span class="c07t">_</span><span class="c06t">lose</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
 to walk into spikes to lose and walk into the target to win. Next, we will add a way
 to easily reset the game.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_09.html"></iframe>
 <a href="./adventuregame_step_09.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -260,6 +323,7 @@ to easily reset the game.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

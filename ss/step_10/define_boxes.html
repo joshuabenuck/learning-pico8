@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -154,41 +155,78 @@
 <p>Start by adding a <code>box</code> property to the <code>ship</code> table. This defines the
 <strong>collison box</strong> of the ship. If the bounds of this box overlap with the bounds
 of an enemy's box, the player should lose a heart.</p>
-<pre><code class="language-lua">ship={
- sp=1,
- x=60,
- y=100,
- h=3,
- p=0,
- box={x1=0,y1=0,x2=7,y2=7}
-}
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">ship</span><span class="c07t">={</span>
+</div>
+<div> <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">y</span><span class="c07t">=</span><span class="c12t">100</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">h</span><span class="c07t">=</span><span class="c12t">3</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">={</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">,</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">}</span>
+</div>
+<div><span class="c07t">}</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Add a <code>box</code> property to the enemies.</p>
-<pre><code class="language-lua">add(enemies,{
- sp=17,
- m_x=i*16,
- m_y=60-i*8,
- x=-32,
- y=-32,
- r=12,
- box={x1=0,y1=0,x2=7,y2=7}
-})
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">add</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">,{</span>
+</div>
+<div> <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">17</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">m</span><span class="c07t">_</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">16</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">-</span><span class="c06t">i</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">x</span><span class="c07t">=-</span><span class="c12t">32</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">y</span><span class="c07t">=-</span><span class="c12t">32</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">r</span><span class="c07t">=</span><span class="c12t">12</span><span class="c07t">,</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">={</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">,</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c12t">7</span><span class="c07t">}</span>
+</div>
+<div><span class="c07t">})</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Next, we add a box to our bullets. If a bullet's box intersects with an enemy's
 box, the enemy should receive damage or be destroyed. Bullets are destroyed by
 the impact.</p>
-<pre><code class="language-lua">function fire()
- local b={
-  sp=3,
-  x=ship.x,
-  y=ship.y,
-  dx=0,
-  dy=-3,
-  box={x1=2,y1=0,x2=5,y2=4}
- }
- add(bullets,b)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">fire</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">local b</span><span class="c07t">={</span>
+</div>
+<div>  <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">3</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">x</span><span class="c07t">=</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">y</span><span class="c07t">=</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">dx</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">dy</span><span class="c07t">=-</span><span class="c12t">3</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">box</span><span class="c07t">={</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c12t">2</span><span class="c07t">,</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c12t">5</span><span class="c07t">,</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c12t">4</span><span class="c07t">}</span>
+</div>
+<div> <span class="c07t">}</span>
+</div>
+<div> <span class="c06t">add</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>This <strong>bounding box</strong> is smaller than the one for either enemies or the ship
 since the bullet doesn't fill its tile.</p>
 <p>The function <code>abs_box</code> goes above the placeholder <code>coll</code> function we added in
@@ -198,24 +236,43 @@ coordinates of the box.</p>
 <p>That is what this function does. It adds an object's <code>x</code> and <code>y</code> coordinates to
 the <code>box</code>'s properties. It translates from the <em>relative</em> coordinates of the
 box to its <em>absolute</em> coordinates.</p>
-<pre><code class="language-lua">function abs_box(s)
- local box={}
- box.x1=s.box.x1+s.x
- box.y1=s.box.y1+s.y
- box.x2=s.box.x2+s.x
- box.y2=s.box.y2+s.y
- return box
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">abs</span><span class="c07t">_</span><span class="c06t">box</span><span class="c07t">(</span><span class="c06t">s</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">local box</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">.</span><span class="c06t">x1</span><span class="c07t">=</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">box</span><span class="c07t">.</span><span class="c06t">x1</span><span class="c07t">+</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">x</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y1</span><span class="c07t">=</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y1</span><span class="c07t">+</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">y</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">.</span><span class="c06t">x2</span><span class="c07t">=</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">box</span><span class="c07t">.</span><span class="c06t">x2</span><span class="c07t">+</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">x</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y2</span><span class="c07t">+</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">y</span>
+</div>
+<div> <span class="c06t">return box</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>This next change sets us up for calculating whether there was a collision
 between two boxes. It takes two entities (<code>A</code> and <code>B</code>) and gets the screen
 coordinates of the bounds of their <strong>bounding box</strong>.</p>
-<pre><code class="language-lua">function coll(a, b)
- --todo
- box_a=abs_box(a)
- box_b=abs_box(b)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">a</span><span class="c07t">, </span><span class="c06t">b</span><span class="c07t">)</span>
+</div>
+<div> <span class="c13t">--todo</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">_</span><span class="c06t">a</span><span class="c07t">=</span><span class="c06t">abs</span><span class="c07t">_</span><span class="c06t">box</span><span class="c07t">(</span><span class="c06t">a</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">box</span><span class="c07t">_</span><span class="c06t">b</span><span class="c07t">=</span><span class="c06t">abs</span><span class="c07t">_</span><span class="c06t">box</span><span class="c07t">(</span><span class="c06t">b</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>What do we have to show for all that typing? Nothing (just yet), at least, not
 that we can see visually. We did plenty conceptually.</p>
 <p>We added bounding boxes to our ship, enemies, and bullets. We can compute the
@@ -226,6 +283,7 @@ bullets.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_10.html"></iframe>
 <a href="./ss_10.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -273,6 +331,7 @@ bullets.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

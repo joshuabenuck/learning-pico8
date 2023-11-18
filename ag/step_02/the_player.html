@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -148,43 +149,78 @@
 <p>Draw a sprite for the player.</p>
 <img src="./player_sprite.png"/>
 <p>Click on the <strong>+</strong> in the code editor to creat tab <strong>2</strong>. This will be used for the code related to the player.</p>
-<pre><code class="language-lua">-- player code
-
-function make_player()
- p={}
- p.x=3
- p.y=2
- p.sprite=1
- p.keys=0
-end
-
-function draw_player()
- spr(p.sprite,p.x*8,p.y*8)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">-- player code</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">make</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">3</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">2</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">sprite</span><span class="c07t">=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">keys</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">sprite</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">,</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Call these functions from the <code>game loop</code> tab (tab <strong>0</strong>).</p>
-<pre><code class="language-lua">--game loop
-
-function _init()
- map_setup()
- make_player()
-end
-
-function _update()
-end
-
-function _draw()
- cls()
- draw_map()
- draw_player()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c13t">--game loop</span>
+</div>
+<div class="lea">
+</div>
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">map</span><span class="c07t">_</span><span class="c06t">setup</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c06t">make</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+<div class="lea">
+</div>
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+<div class="lea">
+</div>
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+s</strong>. Run them with <strong>ctrl+r</strong>. You should see your
 player displayed on the map. The player cannot move around yet. We'll add some
 movement to the player in the next section.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_02.html"></iframe>
 <a href="./adventuregame_step_02.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -232,6 +268,7 @@ movement to the player in the next section.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

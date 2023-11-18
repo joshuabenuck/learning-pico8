@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -168,42 +169,78 @@ the map by holding space and dragging with the mouse.</p>
 <h2 id="game-loop"><a class="header" href="#game-loop">Game Loop</a></h2>
 <p>Create the main <code>game loop</code>. Put this in the <strong>0</strong> tab of the editor.</p>
 <img src="./tab_0.png" width="400"/>
-<pre><code class="language-lua">--game loop
-
-function _init()
- map_setup()
-end
-
-function _update()
-end
-
-function _draw()
- cls()
- draw_map()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">--game loop</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">map</span><span class="c07t">_</span><span class="c06t">setup</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="map-code"><a class="header" href="#map-code">Map Code</a></h2>
 <p>Create the code that draws the map. Click the <strong>+</strong> button to create tab <strong>1</strong> and put this code in that tab.</p>
-<pre><code class="language-lua">--map code
-
-function map_setup()
- --map tile settings
- wall=0
- key=1
- door=2
- anim1=3
- anim2=4
- lose=6
- win=7
-end
-
-function draw_map()
- map(0,0,0,0,128,64)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">--map code</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">map</span><span class="c07t">_</span><span class="c06t">setup</span><span class="c07t">()</span>
+</div>
+<div> <span class="c13t">--map tile settings</span>
+</div>
+<div> <span class="c06t">wall</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div> <span class="c06t">key</span><span class="c07t">=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c06t">door</span><span class="c07t">=</span><span class="c12t">2</span>
+</div>
+<div> <span class="c06t">anim1</span><span class="c07t">=</span><span class="c12t">3</span>
+</div>
+<div> <span class="c06t">anim2</span><span class="c07t">=</span><span class="c12t">4</span>
+</div>
+<div> <span class="c06t">lose</span><span class="c07t">=</span><span class="c12t">6</span>
+</div>
+<div> <span class="c06t">win</span><span class="c07t">=</span><span class="c12t">7</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">map</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">128</span><span class="c07t">,</span><span class="c12t">64</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./adventuregame_step_01.html"></iframe>
 <a href="./adventuregame_step_01.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -251,6 +288,7 @@ end
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

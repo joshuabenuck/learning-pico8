@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -146,21 +147,31 @@
                         <h1 id="camera"><a class="header" href="#camera">Camera</a></h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DE-J_n-Y-cU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>Have the camera follow the player around the map.</p>
-<p>Add code to set the camera to the <code>draw_map</code> function in the map code tab.</p>
+<p>Add code to set the camera to the <code>draw_map</code> function in the <code>map code</code> tab (<strong>tab 1</strong>).</p>
 <ul>
 <li>divide the player's x and y coordinates by 16</li>
 <li>round down</li>
 <li>multiply by 16</li>
 <li>convert mapx, mapy to a pixel coordinate by multiplying by 8</li>
 </ul>
-<pre><code class="language-lua">function draw_map()
- mapx=flr(p.x/16)*16
- mapy=flr(p.y/16)*16
- camera(mapx*8,mapy*8)
-
- map(0,0,0,0,128,64)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c06t">mapx</span><span class="c07t">=</span><span class="c11t">flr</span><span class="c07t">(</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">/</span><span class="c12t">16</span><span class="c07t">)*</span><span class="c12t">16</span>
+</div>
+<div class="add"> <span class="c06t">mapy</span><span class="c07t">=</span><span class="c11t">flr</span><span class="c07t">(</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">/</span><span class="c12t">16</span><span class="c07t">)*</span><span class="c12t">16</span>
+</div>
+<div class="add"> <span class="c06t">camera</span><span class="c07t">(</span><span class="c06t">mapx</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">,</span><span class="c06t">mapy</span><span class="c07t">*</span><span class="c12t">8</span><span class="c07t">)</span>
+</div>
+<div class="add">
+</div>
+<div class="lea"> <span class="c06t">map</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">0</span><span class="c07t">,</span><span class="c12t">128</span><span class="c07t">,</span><span class="c12t">64</span><span class="c07t">)</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. The camera should now
 follow your character from screen to screen. Wondering a world without being able
@@ -168,6 +179,7 @@ to interact with it isn't all that interesting so lets add some things the playe
 can pick up in the next section.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_04.html"></iframe>
 <a href="./adventuregame_step_04.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -215,6 +227,7 @@ can pick up in the next section.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

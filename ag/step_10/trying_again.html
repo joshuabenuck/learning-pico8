@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -147,12 +148,21 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2UDThoTpxOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>Add a way for the player to restart the game when they win or lose.</p>
 <p>Add the following else condition to the <code>_update</code> function.</p>
-<pre><code class="language-lua">else
- if (btnp(X)) extcmd(&quot;reset&quot;)
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">else</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">X</span><span class="c07t">)) </span><span class="c06t">extcmd</span><span class="c07t">(</span><span class="c12t">"reset"</span><span class="c07t">)</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Add the following code to the <code>draw_win_lose</code> function</p>
-<pre><code class="language-lua">print(&quot;press X to play again&quot;,20,72,5)
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"press X to play again"</span><span class="c07t">,</span><span class="c12t">20</span><span class="c07t">,</span><span class="c12t">72</span><span class="c07t">,</span><span class="c12t">5</span><span class="c07t">)</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be able
 to have reset the game after winning or losing.</p>
@@ -164,6 +174,7 @@ a game over event.</p>
 guidance on what to do in the game.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_10.html"></iframe>
 <a href="./adventuregame_step_10.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -211,6 +222,7 @@ guidance on what to do in the game.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

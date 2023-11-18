@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -151,54 +152,108 @@
 <img src="./spikes_up.png" style="min-width: 400px; max-width: 800px"/>
 <p>The tile with spikes down should have one flag set: <strong>flag 4</strong>, (anim2, step 2 of the animation).</p>
 <img src="./spikes_down.png" style="min-width: 400px; max-width: 800px"/>
-<p>Add two variables to the <code>map_setup</code> function in the map code tab.</p>
-<pre><code class="language-lua">function map_setup()
- --timers
- timer=0
- anim_time=30 -- 30 = 1 second
-</code></pre>
-<p>Add a new function <code>unswap_tile</code> to the map code tab. Note that this function is nearly the same as <code>swap_tile</code> and so you can use copy paste to write it.</p>
-<pre><code class="language-lua">function unswap_tile(x,y)
- tile=mget(x,y)
- mset(x,y,tile-1)
-end
-</code></pre>
-<p>Add a new tab, animation code. Add a new function <code>toggle_tiles</code> to this tab.</p>
-<pre><code class="language-lua">function toggle_tiles()
- for x=mapx,mapx+15 do
-  for y=mapy,mapy+15 do
-   if (is_tile(anim1,x,y)) then
-    swap_tile(x,y)
-    sfx(3)
-   elseif (is_tile(anim2,x,y))then
-    unswap_tile(x,y)
-    sfx(3)
-   end
-  end
- end
-end
-</code></pre>
-<p>Add a new function called <code>update_map</code> to the map code tab.</p>
-<pre><code class="language-lua">function update_map()
- if (timer&lt;0) then
-  toggle_tiles()
-  timer=anim_time
- end
- timer-=1
-end
-</code></pre>
+<p>Add two variables to the <code>map_setup</code> function in the <code>map code</code> tab (<strong>tab 1</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c06t">map</span><span class="c07t">_</span><span class="c06t">setup</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c13t">--timers</span>
+</div>
+<div class="add"> <span class="c06t">timer</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div class="add"> <span class="c06t">anim</span><span class="c07t">_</span><span class="c06t">time</span><span class="c07t">=</span><span class="c12t">30 </span><span class="c13t">-- 30 = 1 second</span>
+</div>
+<div class="lea"> <span class="c13t">--map tile settings</span>
+</div>
+<div class="lea"> <span class="c06t">wall</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Add a new function <code>unswap_tile</code> to the <code>map code</code> tab (<strong>tab 0</strong>). Note that this function is nearly the same as <code>swap_tile</code> and so you can use copy and paste to create it (select the lines, <strong>ctrl-c</strong> to copy, and <strong>ctrl-v</strong> to paste)..</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">unswap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">-</span><span class="c12t">1</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Add a new tab called <code>animation code</code> (<strong>tab 4</strong>). Add a function named <code>toggle_tiles</code> to this tab.</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c13t">--animation code</span>
+</div>
+<div><span class="c14t">function </span><span class="c06t">toggle</span><span class="c07t">_</span><span class="c06t">tiles</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mapx</span><span class="c07t">,</span><span class="c06t">mapx</span><span class="c07t">+</span><span class="c12t">15 </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c14t">for </span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mapy</span><span class="c07t">,</span><span class="c06t">mapy</span><span class="c07t">+</span><span class="c12t">15 </span><span class="c14t">do</span>
+</div>
+<div>   <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">anim1</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)) </span><span class="c14t">then</span>
+</div>
+<div>    <span class="c06t">swap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div>    <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">3</span><span class="c07t">)</span>
+</div>
+<div>   <span class="c14t">elseif </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">anim2</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">))</span><span class="c14t">then</span>
+</div>
+<div>    <span class="c06t">unswap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div>    <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">3</span><span class="c07t">)</span>
+</div>
+<div>   <span class="c14t">end</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Add a new function called <code>update_map</code> to the <code>map code</code> tab (<strong>tab 1</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">timer</span><span class="c07t"><</span><span class="c12t">0</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">toggle</span><span class="c07t">_</span><span class="c06t">tiles</span><span class="c07t">()</span>
+</div>
+<div>  <span class="c06t">timer</span><span class="c07t">=</span><span class="c06t">anim</span><span class="c07t">_</span><span class="c06t">time</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div> <span class="c06t">timer</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Finally, call the <code>update_map</code> function from the <code>_update</code> function in the <code>game loop</code> (<strong>tab 0</strong>).</p>
-<pre><code class="language-lua">function _update()
- update_map()
- move_player()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div class="add"> <span class="c06t">update</span><span class="c07t">_</span><span class="c06t">map</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. Your animated tiles
 should change about once every second, but there still isn't a way to win the
 game. Lets add that next.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_08.html"></iframe>
 <a href="./adventuregame_step_08.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -246,6 +301,7 @@ game. Lets add that next.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

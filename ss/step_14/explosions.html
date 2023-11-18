@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -152,44 +153,88 @@
 <p><a href="./tut_14.git">Image</a> (<a href="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_14.gif">Original Source</a>)</p>
 <p>Let's make the enemies explode when they are destroyed.</p>
 <p>Explosions are different from enemies or bullets so we need a table to track them. Put this in <code>_init</code>.</p>
-<pre><code class="language-lua">bullets={}
-enemies={}
-explosions={}
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">bullets</span><span class="c07t">={}</span>
+</div>
+<div><span class="c06t">enemies</span><span class="c07t">={}</span>
+</div>
+<div><span class="c06t">explosions</span><span class="c07t">={}</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Right above the <code>fire</code> function, add the <code>explode</code> function.</p>
-<pre><code class="language-lua">function explode(x,y)
- add(explosions,{x=x,y=y,t=0})
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">explode</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">add</span><span class="c07t">(</span><span class="c06t">explosions</span><span class="c07t">,{</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">t</span><span class="c07t">=</span><span class="c12t">0</span><span class="c07t">})</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In <code>update_game</code>, put this explosions loop right before the loop over the enemies.</p>
-<pre><code class="language-lua">for ex in all(explosions) do
- ex.t+=1
- if ex.t==13 then
-  del(explosions,ex)
- end
-end
-
-for e in all(enemies) do
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">for </span><span class="c06t">ex </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">explosions</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div> <span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c14t">if </span><span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">==</span><span class="c12t">13 </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">del</span><span class="c07t">(</span><span class="c06t">explosions</span><span class="c07t">,</span><span class="c06t">ex</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">for </span><span class="c06t">e </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In the bullets loop of <code>update_game</code>, add a call to <code>explode</code>.</p>
-<pre><code class="language-lua">if coll(b,e) then
- del(enemies,e)
- ship.p+=1
- explode(e.x,e.y)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">if </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">b</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div> <span class="c06t">del</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">p</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c06t">explode</span><span class="c07t">(</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In <code>draw_game</code>, add a loop to draw all of the explosions.</p>
-<pre><code class="language-lua">function draw_game()
- cls()
- print(ship.p,6)
- if not ship.imm or t%8&lt;4 then
-  spr(ship.sp,ship.x,ship.y)
- end
-
- for ex in all(explosions) do
-  circ(ex.x,ex.y,ex.t/3,8+ex.t%3)
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">game</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">p</span><span class="c07t">,</span><span class="c12t">6</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">if not </span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">imm </span><span class="c14t">or </span><span class="c06t">t</span><span class="c07t">%</span><span class="c12t">8</span><span class="c07t"><</span><span class="c12t">4 </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c11t">spr</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">sp</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">ex </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">explosions</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c11t">circ</span><span class="c07t">(</span><span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">3</span><span class="c07t">,</span><span class="c12t">8</span><span class="c07t">+</span><span class="c06t">ex</span><span class="c07t">.</span><span class="c06t">t</span><span class="c07t">%</span><span class="c12t">3</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In the video, the score flashes during the explosion animation. The code to
 flash the score is not in the video. Part of it belongs in the snippet we just
 entered.</p>
@@ -201,6 +246,7 @@ second before it disappears.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_14.html"></iframe>
 <a href="./ss_14.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -248,6 +294,7 @@ second before it disappears.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -173,10 +174,16 @@ resource consumption), it would be nice to be able to prove it.</p>
 <p>Let's add some code to illustrate the problem. We will display the number of
 bullets we are tracking. If the bullets are not being cleaned up, the count
 should only ever go up.</p>
-<pre><code class="language-lua">function _draw()
- cls()
- print(#bullets,6)
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(#</span><span class="c06t">bullets</span><span class="c07t">,</span><span class="c12t">6</span><span class="c07t">)</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run the game and fire some bullets.</p>
 <div><img src="./problem.png" width="512" /></div>
 <p>In the screenshot above, we have fired a total of <code>10</code> bullets, but only <code>3</code>
@@ -184,18 +191,32 @@ are visible on the screen. This clearly indicates the problem. We should only
 be tracking bullets that are visible. Anything that has gone off the screen is
 a waste of memory and processing time.</p>
 <p>That gives us an outline of what the fix should be. Let's implement it.</p>
-<pre><code class="language-lua">function _update()
- t=t+1
-
- for b in all(bullets) do
-  b.x+=b.dx
-  b.y+=b.dy
-  if b.x&lt;0 or b.x&gt;128 or
-   b.y&lt;0 or b.y&gt;128 then
-   del(bullets,b)
-  end
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c06t">t</span><span class="c07t">+</span><span class="c12t">1</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">b </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">b</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">+=</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">dx</span>
+</div>
+<div>  <span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">+=</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">dy</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t"><</span><span class="c12t">0 </span><span class="c14t">or </span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">></span><span class="c12t">128 </span><span class="c14t">or</span>
+</div>
+<div>   <span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t"><</span><span class="c12t">0 </span><span class="c14t">or </span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">></span><span class="c12t">128 </span><span class="c14t">then</span>
+</div>
+<div>   <span class="c06t">del</span><span class="c07t">(</span><span class="c06t">bullets</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">)</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>If a bullet's <code>x</code> or <code>y</code> coordinates ever go outside of the screen bounds, we
 can safely get rid of it. The screen bounds are 0-128.</p>
 <p>Before we test it, let's make a change to our bullet sprite to the bullets
@@ -209,6 +230,7 @@ and crisis averted!</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_05.html"></iframe>
 <a href="./ss_05.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -256,6 +278,7 @@ and crisis averted!</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

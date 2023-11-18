@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -165,48 +166,90 @@ runtime. This makes it possible to <em>change</em> (whle the game is running!) t
 <code>_update</code> and <code>_draw</code> functions PICO-8 calls during each frame.</p>
 <p>The way we do this is by simply assigning the name of another function to the <code>_update</code> and <code>_draw</code> identifiers.</p>
 <p>For example:</p>
-<pre><code class="language-lua">_draw=a_different_draw_function
-_update=a_different_update_function
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">=</span><span class="c06t">a</span><span class="c07t">_</span><span class="c06t">different</span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">_</span><span class="c14t">function</span>
+</div>
+<div><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">=</span><span class="c06t">a</span><span class="c07t">_</span><span class="c06t">different</span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">_</span><span class="c14t">function</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>The current <code>_update</code> and <code>_draw</code> functions represent what should happen when we are in our <code>game</code> state. These will be renamed and we will add new functions to call when we are in our <code>game over</code> state.</p>
 <p><code>start</code> is the function that will replace assign the <code>game</code> state functions.
 Add a call to it at the end of <code>_init</code>.</p>
-<pre><code class="language-lua"> end
- start()
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div> <span class="c14t">end</span>
+</div>
+<div> <span class="c06t">start</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Add these functions right after <code>_init</code>.</p>
-<pre><code class="language-lua">function start()
- _update=update_game
- _draw=draw_game
-end
-
-function game_over()
- _update=update_over
- _draw=draw_over
-end
-
-function update_over()
-end
-
-function draw_over()
- cls()
- print(&quot;game over&quot;,50,50,4)
-end
-</code></pre>
-<p>Rename the existing <code>_update</code> function to `update_game.</p>
-<pre><code class="language-lua">function update_game()
- t=t+1
-</code></pre>
-<p>Rename the existing <code>_draw</code> function to `draw_game.</p>
-<pre><code class="language-lua">function draw_game()
- cls()
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">start</span><span class="c07t">()</span>
+</div>
+<div> <span class="c07t">_</span><span class="c06t">update</span><span class="c07t">=</span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">game</span>
+</div>
+<div> <span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">=</span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">game</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">game</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">()</span>
+</div>
+<div> <span class="c07t">_</span><span class="c06t">update</span><span class="c07t">=</span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">over</span>
+</div>
+<div> <span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">=</span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">over</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">()</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">over</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"game over"</span><span class="c07t">,</span><span class="c12t">50</span><span class="c07t">,</span><span class="c12t">50</span><span class="c07t">,</span><span class="c12t">4</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+Rename the existing `_update` function to `update_game`.
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">update</span><span class="c07t">_</span><span class="c06t">game</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c06t">t</span><span class="c07t">+</span><span class="c12t">1</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
+<p>Rename the existing <code>_draw</code> function to <code>draw_game</code>.</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">game</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run the game. The game should run just as it did before as we
 haven't added any code to change the game state. That's coming next.</p>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_12.html"></iframe>
 <a href="./ss_12.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -254,6 +297,7 @@ haven't added any code to change the game state. That's coming next.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

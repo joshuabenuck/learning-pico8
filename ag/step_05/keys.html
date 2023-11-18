@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -176,18 +177,31 @@ what is shown in the screenshot or feel free to make up your own sound.</p>
 <p><img src="./pick_up_sound.png" alt="Pick Up Sound" /></p>
 <p>Now we need to add the code that allows the player to pick up keys. Interacting
 with either the key on the ground or the chest will give the player a key.</p>
-<p>Add two functions, <code>swap_tile</code> and <code>get_key</code>, to the map code tab.</p>
-<pre><code class="language-lua">function swap_tile(x,y)
- tile=mget(x,y)
- mset(x,y,tile+1)
-end
-
-function get_key(x,y)
- p.keys+=1
- swap_tile(x,y)
- sfx(1)
-end
-</code></pre>
+<p>Add two functions, <code>swap_tile</code> and <code>get_key</code>, to the <code>map code</code> tab (<strong>tab 1</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">swap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">+</span><span class="c12t">1</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c14t">function </span><span class="c06t">get</span><span class="c07t">_</span><span class="c06t">key</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">keys</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div> <span class="c06t">swap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">1</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>The <code>swap_tile</code> function replaces the current tile with the tile immediately to
 the right of it in the sprite sheet. This is why we had to draw the key and
 chest variants where we did.</p>
@@ -196,33 +210,69 @@ by one, swaps the tile to show that the player successfully interacted with the
 tile, and plays a sound to give an audible indication of the action.</p>
 <p>Just adding these two functions changes nothing in our code. We have to call
 one of them from somewhere.</p>
-<p>Add a function called <code>interact</code> to the player code tab.</p>
-<pre><code class="language-lua">function interact(x,y)
- if (is_tile(key,x,y)) then
-  get_key(x,y)
- end
-end
-</code></pre>
+<p>Add a function called <code>interact</code> to the <code>player code</code> tab (<strong>tab 2</strong>).</p>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">interact</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">key</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)) </span><span class="c14t">then</span>
+</div>
+<div>  <span class="c06t">get</span><span class="c07t">_</span><span class="c06t">key</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>This function checks to see if the tile is a key tile. If it is, it calls the
 <code>get_key</code> function to pick up the key.</p>
 <p>Now call this function from the <code>move_player</code> function.</p>
-<pre><code class="language-lua">function move_player()
- newx=p.x
- newy=p.y
-
- if (btnp(L)) newx-=1
- if (btnp(R)) newx+=1
- if (btnp(U)) newy-=1
- if (btnp(D)) newy+=1
-
- interact(newx,newy)
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div class="lea"><span class="c14t">function </span><span class="c06t">move</span><span class="c07t">_</span><span class="c06t">player</span><span class="c07t">()</span>
+</div>
+<div class="lea"> <span class="c06t">newx</span><span class="c07t">=</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span>
+</div>
+<div class="lea"> <span class="c06t">newy</span><span class="c07t">=</span><span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span>
+</div>
+<div class="lea">
+</div>
+<div class="lea"> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">L</span><span class="c07t">)) </span><span class="c06t">newx</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div class="lea"> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">R</span><span class="c07t">)) </span><span class="c06t">newx</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div class="lea"> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">U</span><span class="c07t">)) </span><span class="c06t">newy</span><span class="c07t">-=</span><span class="c12t">1</span>
+</div>
+<div class="lea"> <span class="c14t">if </span><span class="c07t">(</span><span class="c11t">btnp</span><span class="c07t">(</span><span class="c06t">D</span><span class="c07t">)) </span><span class="c06t">newy</span><span class="c07t">+=</span><span class="c12t">1</span>
+</div>
+<div class="lea">
+</div>
+<div class="del"> <span class="c14t">if </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
+</div>
+<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
+</div>
+<div class="del"> <span class="c14t">else</span>
+</div>
+<div class="del">  <span class="c06t">sfx</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">)</span>
+</div>
+<div class="del"> <span class="c14t">end</span>
+</div>
+<div class="add"> <span class="c06t">interact</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">)</span>
+</div>
+<div class="lea"><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <p>Save your changes with <strong>ctrl+S</strong>. Run them with <strong>ctrl+R</strong>. You should now be
 able to have your character pick up keys, but you will not be able to see how
 many keys your character is holding. We will fix that in the next section.</p>
 <iframe width="750px" height="680px" src="./adventuregame_step_05.html"></iframe>
 <a href="./adventuregame_step_05.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -270,6 +320,7 @@ many keys your character is holding. We will fix that in the next section.</p>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>

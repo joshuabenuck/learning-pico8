@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pico-8.css">
 
     </head>
     <body>
@@ -153,10 +154,16 @@ programming already, you can skip all this stuff.</p>
 name &quot;variable&quot; implies, the information stored in the variable can vary, or
 change. In PICO-8, variables can hold numbers, text, and the value true or
 false. Here are a few examples of variables:</p>
-<pre><code class="language-lua">x=64
-name=&quot;dylan&quot;
-alive=true
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">64</span>
+</div>
+<div><span class="c06t">name</span><span class="c07t">=</span><span class="c12t">"dylan"</span>
+</div>
+<div><span class="c06t">alive</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Some words are reserved and you can't use them for variable names (like the
 word <code>function</code>).  You also can't start the name of a variable with a number.</p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
@@ -169,13 +176,22 @@ information to do its job. Even if no extra information is needed, you still
 need to write the parentheses.</p>
 <p>Here's an example function called <code>draw_target()</code>. It draws a target shape
 using filled circles. Note that it needs an X and a Y coordinate to do its job:</p>
-<pre><code class="language-lua">function draw_target(x,y)
- circfill(x,y,16,8)
- circfill(x,y,12,7)
- circfill(x,y,8,8)
- circfill(x,y,7,7)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">draw</span><span class="c07t">_</span><span class="c06t">target</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+</div>
+<div> <span class="c11t">circfill</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c12t">16</span><span class="c07t">,</span><span class="c12t">8</span><span class="c07t">)</span>
+</div>
+<div> <span class="c11t">circfill</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c12t">12</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">)</span>
+</div>
+<div> <span class="c11t">circfill</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c12t">8</span><span class="c07t">,</span><span class="c12t">8</span><span class="c07t">)</span>
+</div>
+<div> <span class="c11t">circfill</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">,</span><span class="c12t">7</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Maybe you noticed something: <code>circfill()</code> is a function too! It's a function
 built into PICO-8, so you don't have to write the steps yourself, but it's
 still a function. You give it an X/Y coordinate, a radius, and a color, and it
@@ -190,16 +206,28 @@ result when it's done. In other words, you want it to return the result back to
 you. Easy enough. You just use <code>return</code> and then specify what you want it to
 return.</p>
 <p>Here's a real example:</p>
-<pre><code class="language-lua">function area(width,height)
- return width * height
-end
-
-w=8
-h=5
-if (area(w,h) &gt; 25) then
- print(&quot;big!&quot;)
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">area</span><span class="c07t">(</span><span class="c06t">width</span><span class="c07t">,</span><span class="c06t">height</span><span class="c07t">)</span>
+</div>
+<div> <span class="c06t">return width </span><span class="c07t">* </span><span class="c06t">height</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+<div><span class="c06t">w</span><span class="c07t">=</span><span class="c12t">8</span>
+</div>
+<div><span class="c06t">h</span><span class="c07t">=</span><span class="c12t">5</span>
+</div>
+<div><span class="c14t">if </span><span class="c07t">(</span><span class="c06t">area</span><span class="c07t">(</span><span class="c06t">w</span><span class="c07t">,</span><span class="c06t">h</span><span class="c07t">) > </span><span class="c12t">25</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c12t">"big!"</span><span class="c07t">)</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>When that function gets run, the number returned would be <code>40</code>. Since <code>40</code> is
 indeed greater than <code>25</code>, the <code>print()</code> function would then happen.</p>
 <p>Functions are the backbone of anything you will create in PICO-8. Most games
@@ -223,12 +251,20 @@ like.</p>
 using empty curly braces. Then we add the values with named keys.</p>
 <p>For the items table, we create the table with the values inside the curly
 braces, but without names.  The keys get automatically assigned as numbers.</p>
-<pre><code class="language-lua">player={}
-player.x=112
-player.y=73
-player.alive=true
-items={&quot;sword&quot;,&quot;cloak&quot;,&quot;boots&quot;}
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c06t">player</span><span class="c07t">={}</span>
+</div>
+<div><span class="c06t">player</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c12t">112</span>
+</div>
+<div><span class="c06t">player</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c12t">73</span>
+</div>
+<div><span class="c06t">player</span><span class="c07t">.</span><span class="c06t">alive</span><span class="c07t">=</span><span class="c06t">true</span>
+</div>
+<div><span class="c06t">items</span><span class="c07t">={</span><span class="c12t">"sword"</span><span class="c07t">,</span><span class="c12t">"cloak"</span><span class="c07t">,</span><span class="c12t">"boots"</span><span class="c07t">}</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>That's how to get values into a table. But what about getting values back out?
 For keys that are names, you can just use <code>table.key</code>, such as <code>player.x</code> or
 <code>player.alive</code>. But for keys that are numbers, you use square brackets with the
@@ -237,13 +273,20 @@ number of the key inside, such as <code>items[1]</code> or <code>items[3]</code>
 stored in a table by using the number sign (#), such as <code>#items</code>. In our
 example, this would give you <code>3</code>. This is useful if you have to loop through
 all the values in a table and do something with each value. Here's an example:</p>
-<pre><code class="language-lua">for i=1,#items do
- print(items[i])
-end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,#</span><span class="c06t">items </span><span class="c14t">do</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c06t">items</span><span class="c07t">[</span><span class="c06t">i</span><span class="c07t">])</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>This starts <code>i</code> at <code>1</code> and counts to <code>#items</code> (which is <code>3</code>).
 Each time, it will print the value at <code>items[i]</code>. Since
 <code>i</code> goes from <code>1</code> to <code>3</code>, every item will be printed.</p>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -291,6 +334,7 @@ Each time, it will print the value at <code>items[i]</code>. Since
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../pico-8.js"></script>
 
 
     </body>

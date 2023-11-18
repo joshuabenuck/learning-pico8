@@ -31,6 +31,7 @@
 
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../theme/custom.css">
+        <link rel="stylesheet" href="../../theme/pico-8.css">
 
     </head>
     <body>
@@ -151,20 +152,36 @@
 </video>
 <p><a href="./tut_9.git">Image</a> (<a href="https://ztiromoritz.github.io/pico-8-shooter/gif/tut_9.gif">Original Source</a>)</p>
 <p>We are going to make a few minor changes. The first is just a cleanup task.</p>
-<pre><code class="language-lua">function _init()
- t=0
-
- ship={
-  sp=1,
-  x=60,
-  y=100,
-  h=3,
-  p=0
- }
- bullets={}
- enemies={}
- for i=1,4 d
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">init</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div>
+</div>
+<div> <span class="c06t">ship</span><span class="c07t">={</span>
+</div>
+<div>  <span class="c06t">sp</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">x</span><span class="c07t">=</span><span class="c12t">60</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">y</span><span class="c07t">=</span><span class="c12t">100</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">h</span><span class="c07t">=</span><span class="c12t">3</span><span class="c07t">,</span>
+</div>
+<div>  <span class="c06t">p</span><span class="c07t">=</span><span class="c12t">0</span>
+</div>
+<div> <span class="c07t">}</span>
+</div>
+<div> <span class="c06t">bullets</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c06t">enemies</span><span class="c07t">={}</span>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,</span><span class="c12t">4 </span><span class="c06t">d</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>The variable <code>t</code> is now initialized within <code>_init</code>. This is just good practice.
 It keeps all of your variable initialization in a single location.</p>
 <p>The ship is now placed <code>40</code> pixels farther down on the screen. This is a more
@@ -182,33 +199,60 @@ algorithms a git easier.</p>
 <p>With our bullet defect fixed, we no longer need to display the number of
 bullets in our world. Let's reuse it to display the number of points that have
 been scored.</p>
-<pre><code class="language-lua">function _draw()
- cls()
- print(ship.p,6)
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">draw</span><span class="c07t">()</span>
+</div>
+<div> <span class="c11t">cls</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">print</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">.</span><span class="c06t">p</span><span class="c07t">,</span><span class="c12t">6</span><span class="c07t">)</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Let's prep for the addition of collision detection. Put this function above the <code>fire</code> function.</p>
-<pre><code class="language-lua">function coll(a,b)
- --todo
-end
-
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">a</span><span class="c07t">,</span><span class="c06t">b</span><span class="c07t">)</span>
+</div>
+<div> <span class="c13t">--todo</span>
+</div>
+<div><span class="c14t">end</span>
+</div>
+<div>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>In <code>_update</code>, call the collision function for each enemy.</p>
-<pre><code class="language-lua">function _update()
- t=t+1
-
- for e in all(enemies) do
-  e.x=e.r*sin(t/50)+e.m_x
-  e.y=e.r*cos(t/50)+e.m_y
-  if coll(ship,e) then
-   --todo
-  end
- end
-</code></pre>
+<div class="pico8-src c08b">&nbsp;</div>
+<div class="pico8-src">
+<div><span class="c14t">function </span><span class="c07t">_</span><span class="c06t">update</span><span class="c07t">()</span>
+</div>
+<div> <span class="c06t">t</span><span class="c07t">=</span><span class="c06t">t</span><span class="c07t">+</span><span class="c12t">1</span>
+</div>
+<div>
+</div>
+<div> <span class="c14t">for </span><span class="c06t">e </span><span class="c14t">in </span><span class="c06t">all</span><span class="c07t">(</span><span class="c06t">enemies</span><span class="c07t">) </span><span class="c14t">do</span>
+</div>
+<div>  <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">sin</span><span class="c07t">(</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">x</span>
+</div>
+<div>  <span class="c06t">e</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">r</span><span class="c07t">*</span><span class="c06t">cos</span><span class="c07t">(</span><span class="c06t">t</span><span class="c07t">/</span><span class="c12t">50</span><span class="c07t">)+</span><span class="c06t">e</span><span class="c07t">.</span><span class="c06t">m</span><span class="c07t">_</span><span class="c06t">y</span>
+</div>
+<div>  <span class="c14t">if </span><span class="c06t">coll</span><span class="c07t">(</span><span class="c06t">ship</span><span class="c07t">,</span><span class="c06t">e</span><span class="c07t">) </span><span class="c14t">then</span>
+</div>
+<div>   <span class="c13t">--todo</span>
+</div>
+<div>  <span class="c14t">end</span>
+</div>
+<div> <span class="c14t">end</span>
+</div>
+</div>
+<div class="pico8-src c08b">&nbsp;</div>
 <p>Hit <code>ctrl-r</code> to run the game. The only visible difference should be that firing a bullet no longer increases the count in the upper left corner.</p>
 <div><img src="./result2.png" width="512" /></div>
 <h2 id="end-result"><a class="header" href="#end-result">End Result</a></h2>
 <iframe width="750px" height="680px" src="./ss_09.html"></iframe>
 <a href="./ss_09.p8.png" target="_blank">Download</a>
+<script type="text/javascript" src="/pico-8.js"></script>
 
                     </main>
 
@@ -256,6 +300,7 @@ end
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../pico-8.js"></script>
 
 
     </body>
