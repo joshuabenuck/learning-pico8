@@ -668,7 +668,7 @@ return.</p>
 <div class="pico8-src">
 <div><span class="c14t">function </span><span class="c06t">area</span><span class="c07t">(</span><span class="c06t">width</span><span class="c07t">,</span><span class="c06t">height</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return width </span><span class="c07t">* </span><span class="c06t">height</span>
+<div> <span class="c14t">return </span><span class="c06t">width </span><span class="c07t">* </span><span class="c06t">height</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -2513,11 +2513,11 @@ it out.</p>
 <div class="pico8-src">
 <div><span class="c14t">function </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c11t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
 <div> <span class="c06t">has</span><span class="c07t">_</span><span class="c06t">flag</span><span class="c07t">=</span><span class="c06t">fget</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return has</span><span class="c07t">_</span><span class="c06t">flag</span>
+<div> <span class="c14t">return </span><span class="c06t">has</span><span class="c07t">_</span><span class="c06t">flag</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -2525,7 +2525,7 @@ it out.</p>
 </div>
 <div><span class="c14t">function </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return </span><span class="c14t">not </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">wall</span><span class="c07t">, </span><span class="c06t">x</span><span class="c07t">, </span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c14t">return not </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">wall</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -2555,9 +2555,9 @@ it out.</p>
 </div>
 <div> <span class="c14t">if </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">) </span><span class="c14t">then</span>
 </div>
-<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
 </div>
-<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
 </div>
 <div> <span class="c14t">else</span>
 </div>
@@ -2664,9 +2664,9 @@ with either the key on the ground or the chest will give the player a key.</p>
 <div class="pico8-src">
 <div><span class="c14t">function </span><span class="c06t">swap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c11t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">+</span><span class="c12t">1</span><span class="c07t">)</span>
+<div> <span class="c11t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">+</span><span class="c12t">1</span><span class="c07t">)</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -2732,9 +2732,9 @@ one of them from somewhere.</p>
 </div>
 <div class="del"> <span class="c14t">if </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">) </span><span class="c14t">then</span>
 </div>
-<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
+<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
 </div>
-<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
+<div class="del">  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
 </div>
 <div class="del"> <span class="c14t">else</span>
 </div>
@@ -2888,9 +2888,9 @@ able to pick up a key and use it to unlock a door.</p>
 <div class="pico8-src">
 <div><span class="c14t">function </span><span class="c06t">unswap</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c11t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">-</span><span class="c12t">1</span><span class="c07t">)</span>
+<div> <span class="c11t">mset</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">-</span><span class="c12t">1</span><span class="c07t">)</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -3239,7 +3239,7 @@ to trigger the display of text to the user.</p>
 </div>
 <div><span class="c14t">function </span><span class="c06t">get</span><span class="c07t">_</span><span class="c06t">text</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return texts</span><span class="c07t">[</span><span class="c06t">x</span><span class="c07t">+</span><span class="c06t">y</span><span class="c07t">*</span><span class="c12t">128</span><span class="c07t">]</span>
+<div> <span class="c14t">return </span><span class="c06t">texts</span><span class="c07t">[</span><span class="c06t">x</span><span class="c07t">+</span><span class="c06t">y</span><span class="c07t">*</span><span class="c12t">128</span><span class="c07t">]</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -3334,11 +3334,11 @@ your setup.</p>
 <div class="pico8-src">
 <div><span class="c14t">for </span><span class="c06t">i</span><span class="c07t">=</span><span class="c12t">1</span><span class="c07t">,#</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type </span><span class="c14t">do</span>
 </div>
-<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">tile </span><span class="c07t">== </span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">[</span><span class="c06t">i</span><span class="c07t">]) </span><span class="c06t">return true</span>
+<div> <span class="c14t">if </span><span class="c07t">(</span><span class="c06t">tile </span><span class="c07t">== </span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">[</span><span class="c06t">i</span><span class="c07t">]) </span><span class="c14t">return </span><span class="c06t">true</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
-<div><span class="c06t">return false</span>
+<div><span class="c14t">return </span><span class="c06t">false</span>
 </div>
 </div>
 <div class="pico8-src c08b">&nbsp;</div>
@@ -4187,7 +4187,7 @@ box to its <em>absolute</em> coordinates.</p>
 </div>
 <div> <span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y2</span><span class="c07t">=</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">box</span><span class="c07t">.</span><span class="c06t">y2</span><span class="c07t">+</span><span class="c06t">s</span><span class="c07t">.</span><span class="c06t">y</span>
 </div>
-<div> <span class="c06t">return box</span>
+<div> <span class="c14t">return </span><span class="c06t">box</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -4247,13 +4247,13 @@ bullets.</p>
 </div>
 <div>    <span class="c06t">box</span><span class="c07t">_</span><span class="c06t">b</span><span class="c07t">.</span><span class="c06t">y1</span><span class="c07t">></span><span class="c06t">box</span><span class="c07t">_</span><span class="c06t">a</span><span class="c07t">.</span><span class="c06t">y2 </span><span class="c14t">then</span>
 </div>
-<div>    <span class="c06t">return false</span>
+<div>    <span class="c14t">return </span><span class="c06t">false</span>
 </div>
 <div> <span class="c14t">end</span>
 </div>
 <div> 
 </div>
-<div> <span class="c06t">return true</span>
+<div> <span class="c14t">return </span><span class="c06t">true</span>
 </div>
 <div><span class="c14t">end</span>
 </div>

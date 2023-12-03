@@ -156,11 +156,11 @@ it out.</p>
 <div class="pico8-src">
 <div><span class="c14t">function </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c06t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c06t">tile</span><span class="c07t">=</span><span class="c11t">mget</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
 <div> <span class="c06t">has</span><span class="c07t">_</span><span class="c06t">flag</span><span class="c07t">=</span><span class="c06t">fget</span><span class="c07t">(</span><span class="c06t">tile</span><span class="c07t">,</span><span class="c06t">tile</span><span class="c07t">_</span><span class="c06t">type</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return has</span><span class="c07t">_</span><span class="c06t">flag</span>
+<div> <span class="c14t">return </span><span class="c06t">has</span><span class="c07t">_</span><span class="c06t">flag</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -168,7 +168,7 @@ it out.</p>
 </div>
 <div><span class="c14t">function </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
-<div> <span class="c06t">return </span><span class="c14t">not </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">wall</span><span class="c07t">, </span><span class="c06t">x</span><span class="c07t">, </span><span class="c06t">y</span><span class="c07t">)</span>
+<div> <span class="c14t">return not </span><span class="c06t">is</span><span class="c07t">_</span><span class="c06t">tile</span><span class="c07t">(</span><span class="c06t">wall</span><span class="c07t">,</span><span class="c06t">x</span><span class="c07t">,</span><span class="c06t">y</span><span class="c07t">)</span>
 </div>
 <div><span class="c14t">end</span>
 </div>
@@ -198,9 +198,9 @@ it out.</p>
 </div>
 <div> <span class="c14t">if </span><span class="c06t">can</span><span class="c07t">_</span><span class="c06t">move</span><span class="c07t">(</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">) </span><span class="c14t">then</span>
 </div>
-<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">x</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newx</span><span class="c07t">,</span><span class="c12t">127</span><span class="c07t">)</span>
 </div>
-<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c06t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
+<div>  <span class="c06t">p</span><span class="c07t">.</span><span class="c06t">y</span><span class="c07t">=</span><span class="c11t">mid</span><span class="c07t">(</span><span class="c12t">0</span><span class="c07t">,</span><span class="c06t">newy</span><span class="c07t">,</span><span class="c12t">63</span><span class="c07t">)</span>
 </div>
 <div> <span class="c14t">else</span>
 </div>
